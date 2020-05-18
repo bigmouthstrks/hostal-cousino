@@ -1,0 +1,31 @@
+.list{
+	list-style-type: none;
+}
+
+#view-content{
+	height: 100%;
+}
+
+.nav{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: large;
+}
+
+.title{
+	font-family: 'Playfair Display', serif;
+	font-weight: 500;
+	font-size: 30;
+}
+
+body{
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18;
+}
+
+.card-title{
+	font-weight: 400;
+}
+
+.carousel-caption-bg{
+	background: rgba(0, 0, 0, 0.5);
+}
