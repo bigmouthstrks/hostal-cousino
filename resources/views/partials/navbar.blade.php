@@ -38,7 +38,7 @@
 </nav>
 
 
-<!-- Navbar Sin inicio de sesión 
+<!-- Navbar Sin inicio de sesión
 <div class="p-1">
 	<ul class="container">
 		<div class="nav justify-content-center">
@@ -65,7 +65,7 @@
 </div>
 -->
 
-<!-- Navbar con inicio de sesión 
+<!-- Navbar con inicio de sesión
 <div class="bg-dark">
 	<ul class="container pt-2 pb-2">
 		<div class="nav justify-content-center">

@@ -15,8 +15,8 @@
 
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Raleway:wght@400;600;700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;900&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet"> 
-        
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;900&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,400&display=swap" rel="stylesheet">
+
         <!-- FontAwesome Icons -->
         <script src="https://kit.fontawesome.com/9c85c53d3e.js" crossorigin="anonymous"></script>
 
@@ -25,9 +25,9 @@
     </head>
     <body>
         @include('partials.navbar')
-        {{-- 
+        {{--
 
-        Si hay una sesión activa de un usuario funcionario se muestra la Barra de Herramientas ('toolbar') 
+        Si hay una sesión activa de un usuario funcionario se muestra la Barra de Herramientas ('toolbar')
 
         @include('partials.toolbar')
 
