@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
 
-	<h1 class="title text-center">Hostal Cousiño - Bed & Breakfast</h1>
+	<h2 class="title text-center">Inicio</h2>
 	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 	  	<ol class="carousel-indicators d-none d-md-flex">
 	    	<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
@@ -21,15 +21,15 @@
 		      	</div>
 		    </div>
 		    <div class="carousel-item">
-		      	<img class="d-block w-100" src="{{ asset('images/cook_team.jpg') }}" alt="Second slide">
+		      	<img class="d-block w-100" src="{{ asset('images/bar2.jpg') }}" alt="Second slide">
 		      	<div class="carousel-caption carousel-caption-bg d-none d-md-block">
-		      		<h4>Almuerzos y Cenas</h4>
-		      		<p>Acércate a nuestro restaurant para disfrutar de las mejores cenas y almuerzo en compañía de nuestro excelente equipo de cocina.</p>
-		      	</div>
-		      	<!-- Vista de la leyenda desde un dispositivo móvil -->
-		      	<div class="d-block d-md-none">
-	      			<h4>Almuerzos y Cenas</h4>
-		      		<p>Acércate a nuestro restaurant para disfrutar de las mejores cenas y almuerzo en compañía de nuestro excelente equipo de cocina.</p>
+		      		<h4>Comodidad a tu alcance</h4>
+		      		<p>Reserva una habitación a tu medida en precio y espacio</p>
+	      		</div>
+	  	      	<!-- Vista de la leyenda desde un dispositivo móvil -->
+		      	<div class="d-md-none d-block">
+		      		<h4>Comodidad a tu alcance</h4>
+		      		<p>Reserva una habitación a tu medida en precio y espacio</p>
 		      	</div>
 		    </div>
 		    <div class="carousel-item">
@@ -54,14 +54,16 @@
     			<span class="sr-only">Next</span>
 	  		</a>
 		</div>
-		<hr>
+	<hr>
 	<div class="card-group">
 		<div class="card">
 		  	<img class="card-img-top" src="{{ asset('images/food_service.jpg') }}" alt="Card image cap">
 		  	<div class="card-body">
 		    	<h5 class="card-title">Una cena con clase</h5>
 		    	<p class="card-text">Lleva a quienes te acompañan a una cena elegante, tú pones la gente y nosotros el resto.</p>
-		    	<a href="#" class="btn btn-info w-100">Ver disponibilidad</a>
+		  	</div>
+		  	<div class="card-footer text-muted">
+		  		<a href="#" class="btn btn-info w-100">Ver Más</a>
 		  	</div>
 		</div>
 		<div class="card">
@@ -69,15 +71,19 @@
 	  		<div class="card-body">
 		    	<h5 class="card-title">Habitaciones a tu medida</h5>
 		    	<p class="card-text">No pagues de más por espacio que no utilizarás. Reserva una habitación a tu medida.</p>
-		    	<a href="#" class="btn btn-info w-100">Ver habitaciones</a>
+		  	</div>
+		  	<div class="card-footer text-muted">
+		  		<a href="{{ route('front.rooms') }}" class="btn btn-info w-100">Ver habitaciones</a>
 		  	</div>
 		</div>
 		<div class="card">
 		  	<img class="card-img-top" src="{{ asset('images/breakfast_service.jpg') }}" alt="Card image cap">
 		  	<div class="card-body">
-		    	<h5 class="card-title">Desayuno buffet</h5>
-		    	<p class="card-text">Disfruta de un desayuno contundente y delicioso todas las mañanas.</p>
-		    	<a href="#" class="btn btn-info w-100">Ver menu</a>
+		    	<h5 class="card-title">Desayuno continental</h5>
+		    	<p class="card-text">Disfruta de un desayuno contundente, fresco y lleno de variedad directo a la comodidad de tu habitación.</p>
+		  	</div>
+		  	<div class="card-footer text-muted">
+		  		<a href="#" class="btn btn-info w-100">Ver Menu</a>
 		  	</div>
 		</div>
 	</div>

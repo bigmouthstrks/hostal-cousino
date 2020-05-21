@@ -14,6 +14,7 @@
 			<div class="form-group">
 				<label for="correo">Correo Electrónico</label>
 				<input type="email" class="form-control" placeholder="Ingresa una dirección de e-mail" id="correo">
+				<small class="text-secondary">*Su correo elecrónico será utilizado sólo para el fin indicado</small>
 			</div>
 		  	<div class="form-group">
 			    <label for="mensaje">Example textarea</label>

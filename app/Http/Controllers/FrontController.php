@@ -32,9 +32,9 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function rooms()
     {
-        //
+        return view('front.rooms');
     }
 
     /**
@@ -43,9 +43,9 @@ class FrontController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function services()
     {
-        //
+        return view('front.services');
     }
 
     /**
