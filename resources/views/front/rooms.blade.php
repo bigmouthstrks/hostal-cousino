@@ -3,6 +3,38 @@
 
 	<h2 class="title text-center">Habitaciones</h2>
 
+    <div class="row">
+        <div class="col-9">
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <img class="d-flex w-50" src="{{ asset('images/recepcion/recepcion.jpg') }}" alt="First slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="..." alt="Second slide">
+                </div>
+                <div class="carousel-item">
+                  <img class="d-block w-100" src="..." alt="Third slide">
+                </div>
+              </div>
+              <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+        </div>
+        <div class="col-3 p-4">
+            <h3>Habitacion Doble</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis perspiciatis illo distinctio delectus quasi consequuntur, nam facilis dolore vitae alias nisi veniam sunt, tempora natus quis temporibus, facere non corporis?</p>
+        </div>
+    </div>
+
+
+    {{--
 	<div class="card flex-row flex-wrap">
         <div class="card-header border-0">
             <img src="//placehold.it/700x400" alt="">
@@ -58,5 +90,6 @@
             <a href="#" class="btn btn-info w-100">Ver Disponibilidad</a>
         </div>
     </div>
+    --}}
 
 @endsection

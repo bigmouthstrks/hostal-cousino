@@ -2,7 +2,9 @@
 
 @section('main')
 
-
+	{{--
+		Funcionalidad que permite enviar un mensaje al hostal, dicho mensaje se mostrará en la bandeja de mensajes de los funcionarios del hostal
+	--}}
 	<h1 class="title text-center">Envíanos un mensaje</h1>
 	<div class="container row justify-content-center">
 		<div class="d-inline col-12 col-md-8 col-lg-6 border rounded">
@@ -29,6 +31,31 @@
 		</div>
 	</div>
 
-	<script type="text/javascript"></script>
+
+	{{--
+		Función para contar carácteres restantes del mensaje a enviar
+	--}}
+	<script type="text/javascript">
+
+		var max_caracteres = 200;
+		var mensaje_input = document.getElementById("mensaje");
+		var caracteres_restantes = document.getElementById("CaracteresRestantes");
+
+		caracteres_restantes.innerHTML = max_caracteres;
+
+		mensaje_input.addEventListener("keydown",contar);
+
+		function contar(e){
+			var cant_caracteres = mensaje_input.value.length;
+			if (cant_caracteres >= max_caracteres){
+				e.preventDefault();
+			} else{
+				caracteres_restantes.innerHTML = max_caracteres - (cant_caracteres-1);
+			}
+		}
+
+	</script>
+
+
 
 @endsection
