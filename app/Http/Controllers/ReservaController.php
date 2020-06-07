@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Testimonio;
 use Illuminate\Http\Request;
 
-class FrontController extends Controller
+class ReservaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +12,8 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $testimonios = Testimonio::all();
-        return view('front.index',compact('testimonios'));
+    {
+        //
     }
 
     /**
@@ -23,9 +21,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function create()
     {
-        return view('front.about');
+        return view('reservas.create');
     }
 
     /**
@@ -34,9 +32,9 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function rooms()
+    public function store(Request $request)
     {
-        return view('front.rooms');
+        //
     }
 
     /**
@@ -45,9 +43,9 @@ class FrontController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function services()
+    public function show($id)
     {
-        return view('front.services');
+        //
     }
 
     /**

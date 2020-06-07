@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Testimonio;
 use Illuminate\Http\Request;
 
-class FrontController extends Controller
+class TestimonioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $testimonios = Testimonio::all();
-        return view('front.index',compact('testimonios'));
+        return view('testimonio.index',compact('testimonios'));
     }
 
     /**
@@ -23,9 +23,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function create()
     {
-        return view('front.about');
+        //
     }
 
     /**
@@ -34,29 +34,29 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function rooms()
+    public function store(Request $request)
     {
-        return view('front.rooms');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function services()
+    public function show(Testimonio $testimonio)
     {
-        return view('front.services');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Testimonio $testimonio)
     {
         //
     }
@@ -65,10 +65,10 @@ class FrontController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Testimonio $testimonio)
     {
         //
     }
@@ -76,10 +76,10 @@ class FrontController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Testimonio  $testimonio
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Testimonio $testimonio)
     {
         //
     }

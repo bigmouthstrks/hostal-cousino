@@ -2,7 +2,7 @@
 @section('main')
 
 	<h2 class="title text-center">Habitaciones</h2>
-
+{{--
     <div class="row">
         <div class="col-9">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -30,18 +30,17 @@
         <div class="col-3 p-4">
             <h3>Habitacion Doble</h3>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis perspiciatis illo distinctio delectus quasi consequuntur, nam facilis dolore vitae alias nisi veniam sunt, tempora natus quis temporibus, facere non corporis?</p>
+            <a href="#" class="btn btn-info">Ver Disponibilidad</a>
         </div>
     </div>
+--}}
 
-
-    {{--
 	<div class="card flex-row flex-wrap">
         <div class="card-header border-0">
             <img src="//placehold.it/700x400" alt="">
         </div>
         <div class="card-block px-2 p-5">
-            <h4 class="card-title">Doble</h4>
-            <p class="card-text text-secondary">Sencilla habitación para dos personas.</p>
+            <h4 class="card-title">Doble Twin</h4>
 			<p class="card-text"><i class="fas fa-bed mr-2"></i>2 Camas Individuales</p>
 			<p class="card-text"><i class="fas fa-toilet mr-2"></i>Baño privado</p>
             <p class="card-text"><i class="fas fa-user mr-1"></i><i class="fas fa-user mr-2"></i>2 Personas</p>
@@ -54,7 +53,7 @@
             <img src="//placehold.it/700x400" alt="">
         </div>
         <div class="card-block px-2 p-5">
-            <h4 class="card-title">Doble</h4>
+            <h4 class="card-title">Doble Matrimonial</h4>
             <p class="card-text text-secondary">Elegante habitación para dos personas.</p>
 			<p class="card-text"><i class="fas fa-bed mr-2"></i>1 Cama doble</p>
 			<p class="card-text"><i class="fas fa-toilet mr-2"></i>Baño privado</p>
@@ -90,6 +89,5 @@
             <a href="#" class="btn btn-info w-100">Ver Disponibilidad</a>
         </div>
     </div>
-    --}}
 
 @endsection

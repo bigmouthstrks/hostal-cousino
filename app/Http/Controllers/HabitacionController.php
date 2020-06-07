@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Testimonio;
+use App\Habitacion;
 use Illuminate\Http\Request;
 
-class FrontController extends Controller
+class HabitacionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,9 +13,9 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
-        $testimonios = Testimonio::all();
-        return view('front.index',compact('testimonios'));
+    {
+        $habitaciones = Habitacion::all();
+        return view('habitacion.index',compact('habitaciones'));
     }
 
     /**
@@ -23,9 +23,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function create()
     {
-        return view('front.about');
+        return view('habitacion.create');
     }
 
     /**
@@ -34,29 +34,29 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function rooms()
+    public function store(Request $request)
     {
-        return view('front.rooms');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function services()
+    public function show(Habitacion $habitacion)
     {
-        return view('front.services');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Habitacion $habitacion)
     {
         //
     }
@@ -65,10 +65,10 @@ class FrontController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Habitacion $habitacion)
     {
         //
     }
@@ -76,10 +76,10 @@ class FrontController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Habitacion $habitacion)
     {
         //
     }

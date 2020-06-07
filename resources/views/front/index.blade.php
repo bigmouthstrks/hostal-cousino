@@ -55,6 +55,25 @@
   		</a>
 	</div>
 	<hr>
+	<h2 class="title text-center">Testimonios</h2>
+	<div class="card-group">
+		@foreach($testimonios as $testimonio)
+		<div class="card">
+			<div class="card-body">
+				<h5 class="card-title">{{ $testimonio->id_testimonio }}</h5>
+				<p class="card-text">
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+					<i class="fas fa-star"></i>
+				</p>
+				<p class="card-text">{{ $testimonio->contenido }}</p>
+			</div>
+		</div>
+		@endforeach
+	</div>
+	<hr>
 	<div class="card-group">
 		<div class="card">
 		  	<img class="card-img-top" src="{{ asset('images/food_service.jpg') }}" alt="Card image cap">
