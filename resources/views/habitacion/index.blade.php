@@ -1,22 +1,8 @@
 @extends('layouts.app')
 @section('main')
-    
+
     <div class="d-flex justify-content-between p-2">
         <h3>Habitaciones</h3>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Búsqueda" aria-label="Search">
-            <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Filtrar por
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#">ID</a>
-                  <a class="dropdown-item" href="#">Tipo</a>
-                  <a class="dropdown-item" href="#">Estado</a>
-                  <a href="#" class="dropdown-item">Cant. camas</a>
-                </div>
-              </div>
-        </form>
         <a class="btn btn-danger" href="{{ route('habitaciones.create') }}"><i class="fas fa-plus mr-2"></i>Agregar</a>
     </div>
     <div class="row">
@@ -30,6 +16,7 @@
                             <th>Estado</th>
                             <th>Cantidad Camas</th>
                             <th>Precio Noche</th>
+                            <th>Número</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
@@ -41,9 +28,10 @@
                             <td>{{ Str::ucfirst($habitacion->estado) }}</td>
                             <td>{{ $habitacion->cant_camas }}</td>
                             <td>{{ $habitacion->precio_noche }} </td>
+                            <td>{{ $habitacion->numero }}</td>
                             <td>
                                 <div class="container">
-                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="#" class="btn btn-info">
+                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('habitaciones.show',$habitacion->id_habitacion) }}" class="btn btn-info">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
                                     <a data-toggle="tooltip" data-placement="top" title="Modificar" href="#" class="btn btn-info">

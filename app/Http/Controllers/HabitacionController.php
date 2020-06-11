@@ -25,7 +25,20 @@ class HabitacionController extends Controller
      */
     public function create()
     {
-        return view('habitacion.create');
+        $cantidad_habitaciones = Habitacion::count();
+
+        // Se genera el código de Habitación //
+        $valor_numerico = $cantidad_habitaciones + 1;
+        $id_habitacion = 'HAB';
+        $parte_numerica = '';
+
+        for ($i = 0;$i < 2; $i++) {
+            $parte_numerica = $parte_numerica . '0';
+        }
+
+        $id_habitacion = $id_habitacion . $parte_numerica . $valor_numerico;
+
+        return view('habitacion.create',compact('id_habitacion'));
     }
 
     /**
@@ -36,7 +49,16 @@ class HabitacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $habitacion = new Habitacion();
+        $habitacion->id_habitacion = $request->id_habitacion;
+        $habitacion->estado = $request->estado;
+        $habitacion->cant_camas = $request->cant_camas;
+        $habitacion->tipo = $request->tipo;
+        $habitacion->precio_noche = $request->precio_noche;
+        $habitacion->tamaño = $request->tamaño;
+        $habitacion-> numero = $request->numero;
+        $habitacion->save();
+        return redirect(route('habitacion.index'));
     }
 
     /**
@@ -47,7 +69,7 @@ class HabitacionController extends Controller
      */
     public function show(Habitacion $habitacion)
     {
-        //
+        return view('habitacion.show', compact('habitacion'));
     }
 
     /**
@@ -81,6 +103,7 @@ class HabitacionController extends Controller
      */
     public function destroy(Habitacion $habitacion)
     {
-        //
+        $habitacion->delete();
+        return redirect()->route('habitaciones.index');
     }
 }
