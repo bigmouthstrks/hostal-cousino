@@ -29,12 +29,15 @@
 	      	</li>
 	      	<li class="nav-item dropdown">
         		<a class="nav-link dropdown-toggle text-light btn btn-info mb-1 ml-1 mr-1 p-1 mt-1" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	          <i class="fas fa-user-circle mr-1"></i> Mi Cuenta
+	            <i class="fas fa-user-circle mr-1"></i> Mi Cuenta
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-			<a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
-			<a class="dropdown-item" href="{{ route('habitaciones.index') }}">Habitaciones</a>
-	          <a class="dropdown-item" href="#">Configuracion</a>
+	            <a class="dropdown-item" href="#">Perfil</a>
+                <a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
+                <a class="dropdown-item" href="{{ route('habitaciones.index') }}">Habitaciones</a>
+                <a class="dropdown-item" href="#">Estadías</a>
+                <a class="dropdown-item" href="#">Reservas</a>
+	            <a class="dropdown-item" href="#">Mensajes</a>
 	        </div>
 	    	</li>
 	      	<li class="nav-item">

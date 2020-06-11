@@ -58,7 +58,7 @@ class HabitacionController extends Controller
         $habitacion->tamaño = $request->tamaño;
         $habitacion-> numero = $request->numero;
         $habitacion->save();
-        return redirect(route('habitacion.index'));
+        return redirect()->route('habitacion.index');
     }
 
     /**
@@ -80,7 +80,11 @@ class HabitacionController extends Controller
      */
     public function edit(Habitacion $habitacion)
     {
-        //
+        $estados = array('Disponible','Ocupada','Bloqueada');
+        $tipos_hab = array('Single','Doble Twin','Doble Matrimonial','Triple','Familiar');
+        $tamaños = array('Pequeña','Mediana','Grande');
+
+        return view('habitacion.edit', compact('habitacion','estados','tipos_hab','tamaños'));
     }
 
     /**
@@ -92,7 +96,14 @@ class HabitacionController extends Controller
      */
     public function update(Request $request, Habitacion $habitacion)
     {
-        //
+        $habitacion->estado = $request->estado;
+        $habitacion->cant_camas = $request->cant_camas;
+        $habitacion->tipo = $request->tipo;
+        $habitacion->precio_noche = $request->precio_noche;
+        $habitacion->tamaño = $request->tamaño;
+        $habitacion-> numero = $request->numero;
+        $habitacion->save();
+        return redirect()->route('habitaciones.index');
     }
 
     /**

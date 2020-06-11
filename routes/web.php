@@ -2,10 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-});
-
 // Testimonios //
 Route::get('/testimonios/index','TestimonioController@index')->name('testimonios.index');
 
@@ -16,6 +12,7 @@ Route::post('/habitaciones','HabitacionController@store')->name('habitaciones.st
 Route::get('/habitaciones/{habitacion}','HabitacionController@show')->name('habitaciones.show');
 Route::get('/habitaciones/{habitacion}/edit','HabitacionController@edit')->name('habitaciones.edit');
 Route::delete('/habitaciones/{habitacion}','HabitacionController@destroy')->name('habitaciones.destroy');
+Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('habitaciones.update');
 
 // Reservas //
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
@@ -35,3 +32,4 @@ Route::get('create/usuario','UsuarioController@create')->name('create.usuario');
 Route::post('usuario','UsuarioController@store')->name('usuario.store');
 Route::post('login/usuario', 'UsuarioController@login')->name('login.usuario');
 Route::get('logout/usuario','UsuarioController@logout')->name('logout.usuario');
+Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuario.edit');

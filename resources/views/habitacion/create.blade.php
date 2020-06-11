@@ -52,7 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label for="numero">Número:</label>
-                    <input type="number" max="99" id="numero" name="numero" placeholder="Número de la habitación">
+                    <input type="number" class="form-control" max="99" id="numero" name="numero" placeholder="Número de la habitación">
                 </div>
 				<div class="form-group">
 					<label for="room_images">Imágenes:</label>
@@ -60,7 +60,7 @@
 				</div>
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>
-				<button type="reset" class="btn btn-danger">Cancelar</button>
+				<a href="{{ route('habitaciones.index') }}" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
 	</div>

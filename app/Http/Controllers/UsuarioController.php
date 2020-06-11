@@ -71,7 +71,7 @@ class UsuarioController extends Controller
      */
     public function edit(Usuario $usuario)
     {
-        //
+        return view('usuario.edit', compact('usuario'));
     }
 
     /**

@@ -34,7 +34,7 @@
                                     <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('habitaciones.show',$habitacion->id_habitacion) }}" class="btn btn-info">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="#" class="btn btn-info">
+                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="{{ route('habitaciones.edit',$habitacion->id_habitacion) }}" class="btn btn-info">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </div>
