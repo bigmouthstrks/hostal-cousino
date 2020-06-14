@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ReservaEditRequest;
+use App\Http\Requests\ReservaRequest;
 use Illuminate\Http\Request;
+use App\Reserva;
 
 class ReservaController extends Controller
 {
@@ -32,9 +35,19 @@ class ReservaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ReservaRequest $request)
     {
-        //
+
+
+        $reserva = new Reserva();
+        /* Obtener RUT/PASAPORTE de pasajero */
+        $reserva->estado = 'Activa';
+        $reserva->fecha_realizacion = date("dd/mm/YYYY");
+        $reserva->hora_realizacion = date("hh:mm:ss");
+        $reserva->fecha_llegada = $request->fecha_llegada;
+        $reserva->fecha_salida = $request->fecha_salida;
+        /* Obtener ID_USUARIO */
+        /* Obtener ID_ESTADIA */
     }
 
     /**
@@ -66,7 +79,7 @@ class ReservaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ReservaEditRequest $request, $id)
     {
         //
     }

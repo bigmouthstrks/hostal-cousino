@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Habitacion;
+use App\Http\Requests\HabitacionEditRequest;
 use Illuminate\Http\Request;
+use App\Http\Requests\HabitacionRequest;
 
 class HabitacionController extends Controller
 {
@@ -37,7 +39,6 @@ class HabitacionController extends Controller
         }
 
         $id_habitacion = $id_habitacion . $parte_numerica . $valor_numerico;
-
         return view('habitacion.create',compact('id_habitacion'));
     }
 
@@ -47,16 +48,16 @@ class HabitacionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HabitacionRequest $request)
     {
         $habitacion = new Habitacion();
         $habitacion->id_habitacion = $request->id_habitacion;
-        $habitacion->estado = $request->estado;
+        $habitacion->estado = ucwords($request->estado);
         $habitacion->cant_camas = $request->cant_camas;
-        $habitacion->tipo = $request->tipo;
+        $habitacion->tipo = ucwords($request->tipo);
         $habitacion->precio_noche = $request->precio_noche;
         $habitacion->tamaño = $request->tamaño;
-        $habitacion-> numero = $request->numero;
+        $habitacion->numero = $request->numero;
         $habitacion->save();
         return redirect()->route('habitacion.index');
     }
@@ -94,7 +95,7 @@ class HabitacionController extends Controller
      * @param  \App\Habitacion  $habitacion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Habitacion $habitacion)
+    public function update(HabitacionEditRequest $request, Habitacion $habitacion)
     {
         $habitacion->estado = $request->estado;
         $habitacion->cant_camas = $request->cant_camas;

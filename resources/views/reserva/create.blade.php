@@ -5,7 +5,8 @@
 	<h2 class="title text-center">Reservar</h2>
 	<div class="container row d-flex justify-content-center">
 		<div class="col-6 border rounded p-3">
-			<form>
+            <form method="POST" action="{{ route('reservas.store') }}">
+                @csrf
 				<div class="form-group">
 					<label for="fecha_llegada">Fecha llegada:</label>
 					<input type="date" class="form-control" id="fecha_llegada">

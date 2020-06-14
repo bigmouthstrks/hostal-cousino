@@ -13,7 +13,7 @@ class RegisterUsuarioRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,14 +24,19 @@ class RegisterUsuarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'email' => 'required|unique:usuarios,email',
             'password' => 'required',
         ];
     }
 
     public function messages(){
         return[
+            'nombre.required' => 'Debe ingresar su nombre.',
+            'apellido.required' => 'Debe ingresar su apellido.',
             'email.required' => 'Debe ingresar un email.',
+            'email.unique' => 'Este email ya se encuentra registrado.',
             'password.required' => 'Debe ingresar la contraseña.',
         ];
     }

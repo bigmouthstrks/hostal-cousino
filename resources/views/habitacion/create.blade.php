@@ -4,6 +4,18 @@
     <h2 class="text-center">Agregar Habitación</h2>
     <div class="container row d-flex justify-content-center">
 		<div class="col-6 border rounded p-2">
+            {{-- Mostrar mensajes de error si existen --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            {{-- Formulario de ingreso para una nueva habitación --}}
 			<form method="POST" action={{ route('habitaciones.store') }}>
 				@csrf
 				<div class="form-group">
@@ -13,7 +25,7 @@
 				<div class="form-group">
 					<label for="estado">Estado:</label>
 					<div class="input-group mb-3">
-						<select class="custom-select" id="estado" name="estado">
+						<select class="custom-select" id="estado" name="estado" required>
 						  <option value="Disponible">Disponible</option>
 						  <option value="Ocupada">Ocupada</option>
 						  <option value="Bloqueada">Bloqueada</option>
@@ -27,7 +39,7 @@
 				<div class="form-group">
 					<label for="tipo">Tipo:</label>
 					<div class="input-group mb-3">
-						<select class="custom-select" id="tipo" name="tipo">
+						<select class="custom-select" id="tipo" name="tipo" required>
 						  <option value="Single">Single</option>
 						  <option value="Doble Matrimonial">Doble Matrimonial</option>
 						  <option value="Doble Twin">Doble Twin</option>
@@ -43,7 +55,7 @@
 				<div class="form-group">
 					<label for="tamaño">Tamaño:</label>
 					<div class="input-group mb-3">
-						<select class="custom-select" id="tamaño" name="tamaño">
+						<select class="custom-select" id="tamaño" name="tamaño" required>
 						  <option value="Pequeña">Pequeña</option>
 						  <option value="Mediana">Mediana</option>
 						  <option value="Grande">Grande</option>

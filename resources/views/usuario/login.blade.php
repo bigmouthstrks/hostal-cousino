@@ -17,9 +17,16 @@
                             <label for="password">Contraseña:</label>
                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" class="form-control">
                         </div>
-                        <div class="form-group text-right">
-                            <button type="submit" class="btn btn-info">Iniciar Sesión</button>
+                        <div class="form-row">
+                            <div class="col">
+                                <a href="{{ route('create.usuario') }}">¿Desea registrarse?</a>
+                            </div>
+                            <div class="col text-right">
+                                <button type="submit" class="btn btn-info">Iniciar Sesión</button>
+                            </div>
                         </div>
+
+                        <h5></h5>
 
                         {{-- MENSAJES DE ERROR --}}
                         @if($errors->any())

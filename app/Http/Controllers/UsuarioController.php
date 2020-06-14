@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginUsuarioRequest;
+use App\Http\Requests\RegisterUsuarioRequest;
 
 class UsuarioController extends Controller
 {
@@ -31,7 +32,20 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        return view('usuario.create');
+        $cantidad_usuarios = Usuario::count();
+
+        // Se genera el código de Habitación //
+        $valor_numerico = $cantidad_usuarios + 1;
+        $id_usuario = 'USU';
+        $parte_numerica = '';
+
+        for ($i = 0;$i < 2; $i++) {
+            $parte_numerica = $parte_numerica . '0';
+        }
+
+        $id_usuario = $id_usuario . $parte_numerica . $valor_numerico;
+
+        return view('usuario.create',compact('id_usuario'));
     }
 
     /**
@@ -40,16 +54,17 @@ class UsuarioController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(RegisterUsuarioRequest $request)
     {
         $usuario = new Usuario();
+        $usuario->ID_usuario = $request->id_usuario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->tipo = 'U';
         $usuario->save();
-        return redirect(route('front.index'));
+        return view('usuario.login');
     }
 
     /**

@@ -11,4 +11,5 @@ class Usuario extends Authenticable
     use Notifiable;
     protected $table = "usuarios";
     protected $primaryKey = "ID_usuario";
+    public $keyType = 'string';
 }

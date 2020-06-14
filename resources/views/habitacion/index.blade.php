@@ -24,8 +24,8 @@
                         @foreach($habitaciones as $habitacion)
                         <tr>
                             <td>{{ $habitacion->id_habitacion }}</td>
-                            <td>{{ Str::ucfirst($habitacion->tipo) }}</td>
-                            <td>{{ Str::ucfirst($habitacion->estado) }}</td>
+                            <td>{{ $habitacion->tipo }}</td>
+                            <td>{{ $habitacion->estado }}</td>
                             <td>{{ $habitacion->cant_camas }}</td>
                             <td>{{ $habitacion->precio_noche }} </td>
                             <td>{{ $habitacion->numero }}</td>
