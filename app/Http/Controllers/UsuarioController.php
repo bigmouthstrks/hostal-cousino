@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginUsuarioRequest;
 use App\Http\Requests\RegisterUsuarioRequest;
+use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
 {
@@ -32,20 +33,64 @@ class UsuarioController extends Controller
      */
     public function create()
     {
-        $cantidad_usuarios = Usuario::count();
+        $usuarios = DB::select('SELECT * FROM usuarios');
+        $cantidad_usuarios = 0;
 
-        // Se genera el código de Habitación //
+        foreach ($usuarios as $usuario) {
+            if (strpos($usuario->ID_usuario, 'USU') !== false) {
+                $cantidad_usuarios = $cantidad_usuarios + 1;
+            }
+        }
+
+        // Se genera el código de Usuario //
         $valor_numerico = $cantidad_usuarios + 1;
         $id_usuario = 'USU';
         $parte_numerica = '';
 
-        for ($i = 0;$i < 2; $i++) {
-            $parte_numerica = $parte_numerica . '0';
+        if ($valor_numerico < 10) {
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100) {
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99) {
+            $parte_numerica = '';
         }
 
         $id_usuario = $id_usuario . $parte_numerica . $valor_numerico;
 
         return view('usuario.create',compact('id_usuario'));
+    }
+
+    public function create_funcionario()
+    {
+        $funcionarios = DB::select('SELECT * FROM usuarios');
+        $cantidad_funcionarios = 0;
+
+        foreach ($funcionarios as $funcionario) {
+            if (strpos($funcionario->ID_usuario, 'FUN') !== false) {
+                $cantidad_funcionarios = $cantidad_funcionarios + 1;
+            }
+        }
+
+        // Se genera el código de Funcionario //
+        $valor_numerico = $cantidad_funcionarios + 1;
+        $id_funcionario = 'FUN';
+        $parte_numerica = '';
+
+        if ($valor_numerico < 10) {
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100) {
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99) {
+            $parte_numerica = '';
+        }
+
+        $id_funcionario = $id_funcionario . $parte_numerica . $valor_numerico;
+
+        return view('usuario.create_funcionario',compact('id_funcionario'));
     }
 
     /**
@@ -65,6 +110,19 @@ class UsuarioController extends Controller
         $usuario->tipo = 'U';
         $usuario->save();
         return view('usuario.login');
+    }
+
+    public function store_funcionario(RegisterUsuarioRequest $request)
+    {
+        $usuario = new Usuario();
+        $usuario->ID_usuario = $request->id_usuario;
+        $usuario->nombre = $request->nombre;
+        $usuario->apellido = $request->apellido;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->password);
+        $usuario->tipo = 'F';
+        $usuario->save();
+        return redirect()->route('front.index');
     }
 
     /**

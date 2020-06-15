@@ -4,15 +4,15 @@
     <div class="row">
         <div class="col-6 offset-3">
             <div class="card mt-5">
-                <div class="card-header bg-secondary text-white">REGISTRAR USUARIO</div>
+                <div class="card-header bg-secondary text-white">Registrar Funcionario</div>
                 <div class="card-body">
                     <h5 class="card-title">Ingrese sus datos</h5>
-                    <form method="POST" action="{{ route('usuario.store') }}">
+                    <form method="POST" action="{{ route('funcionario.store') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="id_habitacion">ID usuario:</label>
-                            <input type="text" class="form-control" name="id_usuario" value="{{ $id_usuario }}" placeholder="{{ $id_usuario }}" readonly>
-                        </div>    
+                            <label for="id_funcionario">ID usuario:</label>
+                            <input type="text" class="form-control" name="id_funcionario" value="{{ $id_funcionario }}" placeholder="{{ $id_funcionario }}" readonly>
+                        </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="nombre">Nombre:</label>
@@ -32,11 +32,8 @@
                             <input type="password" class="form-control @error('password') is-invalid @enderror" maxlength="50" id="password" name="password">
                         </div>
                         <div class="form-row">
-                            <div class="col">
-                                <a href="{{ route('login') }}">¿Ya se encuentra registrado?</a>
-                            </div>
                             <div class="col text-right">
-                                <button type="submit" class="btn btn-secondary">Registrar Usuario</button>
+                                <button type="submit" class="btn btn-secondary">Registrar Funcionario</button>
                             </div>
                         </div>
 
@@ -58,6 +55,6 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
 @endsection

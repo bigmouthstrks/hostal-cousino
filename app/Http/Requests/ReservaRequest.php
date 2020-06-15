@@ -13,7 +13,7 @@ class ReservaRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,20 @@ class ReservaRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'fecha_llegada'     => ['required'],
+            'fecha_salida'      => ['required'],
+            'cantidad_adultos'  => ['required'],
+            'cantidad_niños'    => ['required'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'fecha_llegada.required'     => 'Debe ingresar una fecha de llegada.',
+            'fecha_salida.required'      => 'Debe ingresar una fecha de salida.',
+            'cantidad_adultos.required'  => 'Debe ingresar una cantidad de adultos.',
+            'cantidad_niños.required'    => 'Debe ingresar una cantidad de niños.',
         ];
     }
 }

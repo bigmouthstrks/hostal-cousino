@@ -15,6 +15,8 @@
                 </div>
             @endif
 
+            @include('partials.flash-message')
+
             {{-- Formulario de ingreso para una nueva habitación --}}
 			<form method="POST" action={{ route('habitaciones.store') }}>
 				@csrf

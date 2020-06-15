@@ -13,7 +13,7 @@ class HabitacionEditRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,27 @@ class HabitacionEditRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'estado'          => ['required'],
+            'cant_camas'      => ['required','min:1','max:5'],
+            'tipo'            => ['required'],
+            'precio_noche'    => ['required'],
+            'tamaño'          => ['required'],
+            'numero'          => ['required','min:1','max:999'],
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'estado.required'                    => 'Debe ingresar el estado inicial de la habitación.',
+            'cant_camas.required'                => 'Debe ingresar cantidad de camas para la habitación.',
+            'cant_camas.min'                     => 'La cantidad mínima de camas es de 1 por habitación.',
+            'cant_camas.max'                     => 'La cantidad máxima de camas es de 5 por habitación.',
+            'tipo.required'                      => 'Debe ingresar un tipo de habitación.',
+            'precio_noche.required'              => 'Debe ingresar un valor para cada noche en la habitación.',
+            'numero.required'                    => 'Debe ingresar un número para la habitación.',
+            'numero.min'                         => 'El número de habitación debe ser mayor a 1.',
+            'numero.max'                         => 'El número de habitación debe ser menor a 999.',
         ];
     }
 }

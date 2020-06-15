@@ -37,17 +37,17 @@ class ReservaController extends Controller
      */
     public function store(ReservaRequest $request)
     {
-
-
         $reserva = new Reserva();
         /* Obtener RUT/PASAPORTE de pasajero */
         $reserva->estado = 'Activa';
-        $reserva->fecha_realizacion = date("dd/mm/YYYY");
+        $reserva->fecha_realizacion = date("YYYY/mm/dd");
         $reserva->hora_realizacion = date("hh:mm:ss");
         $reserva->fecha_llegada = $request->fecha_llegada;
         $reserva->fecha_salida = $request->fecha_salida;
         /* Obtener ID_USUARIO */
         /* Obtener ID_ESTADIA */
+        $reserva->save();
+        return back()->with('success','¡Reserva registrada con éxito!');
     }
 
     /**

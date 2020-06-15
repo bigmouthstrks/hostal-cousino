@@ -16,6 +16,7 @@ Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('hab
 
 // Reservas //
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
+Route::post('/reservas','ReservaController@store')->name('reservas.store');
 
 // Mensajes //
 Route::get('/mensajes/create','MensajeController@create')->name('mensajes.create');
@@ -33,3 +34,6 @@ Route::post('usuario','UsuarioController@store')->name('usuario.store');
 Route::post('login/usuario', 'UsuarioController@login')->name('login.usuario');
 Route::get('logout/usuario','UsuarioController@logout')->name('logout.usuario');
 Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuario.edit');
+
+Route::get('create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');
+Route::post('funcionario','UsuarioController@store_funcionario')->name('funcionario.store');

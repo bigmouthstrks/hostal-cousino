@@ -17,7 +17,7 @@ class FrontController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {   
+    {
         $testimonios = Testimonio::all();
         return view('front.index',compact('testimonios'));
     }

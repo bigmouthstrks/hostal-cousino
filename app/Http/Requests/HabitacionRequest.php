@@ -26,7 +26,9 @@ class HabitacionRequest extends FormRequest
         return [
             'estado'          => ['required'],
             'cant_camas'      => ['required','min:1','max:5'],
-            'precio_noche'    => ['required','min:10000','max:100000'],
+            'tipo'            => ['required'],
+            'precio_noche'    => ['required'],
+            'tamaño'          => ['required'],
             'numero'          => ['required','min:1','max:999'],
         ];
     }
@@ -38,10 +40,11 @@ class HabitacionRequest extends FormRequest
             'cant_camas.required'                => 'Debe ingresar cantidad de camas para la habitación.',
             'cant_camas.min'                     => 'La cantidad mínima de camas es de 1 por habitación.',
             'cant_camas.max'                     => 'La cantidad máxima de camas es de 5 por habitación.',
+            'tipo.required'                      => 'Debe ingresar un tipo de habitación.',
             'precio_noche.required'              => 'Debe ingresar un valor para cada noche en la habitación.',
-            'precio_noche.min'                   => 'El precio mínimo para una habitación es de $10.000',
-            'precio_noche.max'                   => 'El precio máximo para una habitación es de $100.000',
             'numero.required'                    => 'Debe ingresar un número para la habitación.',
+            'numero.min'                         => 'El número de habitación debe ser mayor a 1.',
+            'numero.max'                         => 'El número de habitación debe ser menor a 999.',
         ];
     }
 }

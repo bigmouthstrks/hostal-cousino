@@ -18,8 +18,7 @@ class MensajeController extends Controller
      */
     public function index()
     {
-        $mensajes = Mensaje::all();
-        return view('mensaje.index', compact('mensajes'));
+        //
     }
 
     /**
@@ -29,6 +28,7 @@ class MensajeController extends Controller
      */
     public function create()
     {
+
         return view('mensaje.create');
     }
 

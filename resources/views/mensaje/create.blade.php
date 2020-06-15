@@ -8,6 +8,19 @@
 	<h1 class="title text-center">Envíanos un mensaje</h1>
 	<div class="container row justify-content-center">
 		<div class="d-inline col-12 col-md-8 col-lg-6 border rounded">
+            {{-- Mostrar mensajes de error si existen --}}
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @include('partials.flash-message')
+
             <form class="p-4">
                 <div class="form-group">
                     <label for="nombre">Nombre</label>

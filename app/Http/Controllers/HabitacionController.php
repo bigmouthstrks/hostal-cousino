@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Habitacion;
-use App\Http\Requests\HabitacionEditRequest;
-use Illuminate\Http\Request;
+
 use App\Http\Requests\HabitacionRequest;
+use App\Http\Requests\HabitacionEditRequest;
 
 class HabitacionController extends Controller
 {
@@ -39,7 +39,8 @@ class HabitacionController extends Controller
         }
 
         $id_habitacion = $id_habitacion . $parte_numerica . $valor_numerico;
-        return view('habitacion.create',compact('id_habitacion'));
+
+        return back()->with('success','¡Habitacion modificada con éxito!');
     }
 
     /**
@@ -59,7 +60,7 @@ class HabitacionController extends Controller
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->save();
-        return redirect()->route('habitacion.index');
+        return back()->with('success','La habitación ha sido agregada con éxito!');
     }
 
     /**

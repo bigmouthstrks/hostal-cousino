@@ -15,7 +15,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" class="form-control">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
                         </div>
                         <div class="form-row">
                             <div class="col">
