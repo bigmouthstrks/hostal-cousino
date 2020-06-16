@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('main')
 
-    <h2 class="text-center">Agregar Habitación</h2>
+    <h2 class="text-center">Modificar Habitación</h2>
     <div class="container row d-flex justify-content-center">
 		<div class="col-6 border rounded p-2">
             {{-- Mostrar mensajes de error si existen --}}
@@ -38,11 +38,26 @@
                             @endforeach
 						</select>
 					</div>
-				</div>
-				<div class="form-group">
-					<label for="cant_camas">Cantidad de Camas:</label>
-					<input type="number" max="5" class="form-control" id="cant_cant" name="cant_camas" placeholder="Cantidad de camas" value="{{ $habitacion->cant_camas }}">
-				</div>
+                </div>
+                <div class="d-flex justify-content-around row">
+                    <div class="form-group col-4">
+                        <label for="cant_camas">Nº de Camas:</label>
+                        <input type="number" class="form-control @error('cant_camas') is-invalid @enderror" id="cant_camas" name="cant_camas" placeholder="Nº de camas" value="{{ $habitacion->cant_camas }}">
+                    </div>
+                    <div class="col-4">
+                        <label for="precio_noche">Precio por noche:</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                          </div>
+                          <input type="number" class="form-control @error('precio_noche') is-invalid @enderror  " id="precio_noche" name="precio_noche" placeholder="Precio" value="{{ $habitacion->precio_noche }}">
+                        </div>
+                      </div>
+                    <div class="form-group col-4">
+                        <label for="numero">Número:</label>
+                        <input type="number" class="form-control @error('numero') is-invalid @enderror" id="numero" name="numero" placeholder="Número" value="{{ $habitacion->numero }}">
+                    </div>
+                </div>
 				<div class="form-group">
 					<label for="tipo">Tipo:</label>
 					<div class="input-group mb-3">
@@ -58,10 +73,6 @@
 					  </div>
 				</div>
 				<div class="form-group">
-					<label for="precio_noche">Precio por noche:</label>
-					<input type="number" class="form-control" id="precio_noche" name="precio_noche" placeholder="Precio por cada noche" value="{{ $habitacion->precio_noche }}">
-				</div>
-				<div class="form-group">
 					<label for="tamaño">Tamaño:</label>
 					<div class="input-group mb-3">
 					    <select class="custom-select" id="tamaño" name="tamaño">
@@ -75,14 +86,35 @@
 						</select>
 					  </div>
                 </div>
-                <div class="form-group">
-                    <label for="numero">Número:</label>
-                    <input type="number" class="form-control" max="99" id="numero" name="numero" placeholder="Número de la habitación">
+                <div class="container p-2 border rounded mt-2 mb-2">
+                    <label>Imágenes:</label>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input @error('imagen') is-invalid @enderror" id="imagen" name="imagen" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="imagen">Imágen</label>
+                        </div>
+                    </div>
+                    {{--
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input @error('imagen_2') is-invalid @enderror" id="imagen_2" name="imagen_2" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="imagen_2">Imágen 2</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input @error('imagen_3') is-invalid @enderror" id="imagen_3" name="imagen_3" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="imagen_3">Imágen 3</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input @error('imagen_4') is-invalid @enderror" id="imagen_4" name="imagen_4" aria-describedby="inputGroupFileAddon01">
+                        <label class="custom-file-label" for="imagen_4">Imágen 4</label>
+                        </div>
+                    </div>
+                    --}}
                 </div>
-				<div class="form-group">
-					<label for="room_images">Imágenes:</label>
-					<input type="file" class="form-control" id="room_images" name="room_images" multiple>
-				</div>
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>
 				<a href="{{ route('habitaciones.index') }}" class="btn btn-danger">Cancelar</a>

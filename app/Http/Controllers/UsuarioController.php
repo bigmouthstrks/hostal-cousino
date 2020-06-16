@@ -115,7 +115,7 @@ class UsuarioController extends Controller
     public function store_funcionario(RegisterUsuarioRequest $request)
     {
         $usuario = new Usuario();
-        $usuario->ID_usuario = $request->id_usuario;
+        $usuario->ID_usuario = $request->id_funcionario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;

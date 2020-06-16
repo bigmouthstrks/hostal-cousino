@@ -3,14 +3,15 @@
 
 <div class="card flex-row flex-wrap m-2">
     <div class="card-header border-0">
-        <img src="//placehold.it/700x400" alt="">
+        <img src="{{ Storage::url($habitacion->imagen) }}" alt="Imágen">
     </div>
     <div class="card-block px-2 p-5">
-        <h4 class="card-title">{{ $habitacion->id_habitacion }}</h4>
-        <p>Cantidad de camas: {{ $habitacion->cant_camas}}</p>
-        <p>Tipo de habitación: {{ $habitacion->tipo }}</p>
-        <p>Estado: {{ Str::ucfirst($habitacion->estado) }}</p>
-        <p>Número: {{ $habitacion->numero }}</p>
+        <h4 class="card-title"><strong>{{ $habitacion->id_habitacion }}</strong></h4>
+        <p>Cantidad de camas: <strong>{{ $habitacion->cant_camas}}</strong></p>
+        <p>Tipo de habitación: <strong>{{ $habitacion->tipo }}</strong></p>
+        <p>Tamaño: <strong>{{$habitacion->tamaño}}</strong></p>
+        <p>Estado: <strong>{{ Str::ucfirst($habitacion->estado) }}</strong></p>
+        <p>Número: <strong>{{$habitacion->numero}}</strong></p>
         <h5>Precio por noche: <b>${{ $habitacion->precio_noche }}</b></h5>
 
         <div class="d-flex justify-content-center p-2">

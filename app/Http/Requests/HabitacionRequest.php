@@ -29,7 +29,14 @@ class HabitacionRequest extends FormRequest
             'tipo'            => ['required'],
             'precio_noche'    => ['required'],
             'tamaño'          => ['required'],
-            'numero'          => ['required','min:1','max:999'],
+            'numero'          => ['required','min:1','max:999','unique:habitaciones,numero'],
+            'imagen'          => ['required'],
+            /*
+            'imagen_1'        => ['required'],
+            'imagen_2'        => ['required'],
+            'imagen_3'        => ['required'],
+            'imagen_4'        => ['required'],
+            */
         ];
     }
 
@@ -43,8 +50,16 @@ class HabitacionRequest extends FormRequest
             'tipo.required'                      => 'Debe ingresar un tipo de habitación.',
             'precio_noche.required'              => 'Debe ingresar un valor para cada noche en la habitación.',
             'numero.required'                    => 'Debe ingresar un número para la habitación.',
+            'numero.unique'                      => 'Este número de habitación ya está en uso.',
             'numero.min'                         => 'El número de habitación debe ser mayor a 1.',
             'numero.max'                         => 'El número de habitación debe ser menor a 999.',
+            'imagen.required'                    => 'Debe ingresar una imágen para la habitación',
+            /*
+            'imagen_1.required'                  => 'Debe subir una primera imágen.',
+            'imagen_2.required'                  => 'Debe subir una segunda imágen.',
+            'imagen_3.required'                  => 'Debe subir una tercera imágen.',
+            'imagen_4.required'                  => 'Debe subir una cuarta imágen.',
+            */
         ];
     }
 }
