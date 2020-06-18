@@ -37,7 +37,7 @@ class UsuarioController extends Controller
         $cantidad_usuarios = 0;
 
         foreach ($usuarios as $usuario) {
-            if (strpos($usuario->ID_usuario, 'USU') !== false) {
+            if (strpos($usuario->id_usuario, 'USU') !== false) {
                 $cantidad_usuarios = $cantidad_usuarios + 1;
             }
         }
@@ -68,7 +68,7 @@ class UsuarioController extends Controller
         $cantidad_funcionarios = 0;
 
         foreach ($funcionarios as $funcionario) {
-            if (strpos($funcionario->ID_usuario, 'FUN') !== false) {
+            if (strpos($funcionario->id_usuario, 'FUN') !== false) {
                 $cantidad_funcionarios = $cantidad_funcionarios + 1;
             }
         }
@@ -102,7 +102,7 @@ class UsuarioController extends Controller
     public function store(RegisterUsuarioRequest $request)
     {
         $usuario = new Usuario();
-        $usuario->ID_usuario = $request->id_usuario;
+        $usuario->id_usuario = $request->id_usuario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;
@@ -115,7 +115,7 @@ class UsuarioController extends Controller
     public function store_funcionario(RegisterUsuarioRequest $request)
     {
         $usuario = new Usuario();
-        $usuario->ID_usuario = $request->id_funcionario;
+        $usuario->id_usuario = $request->id_funcionario;
         $usuario->nombre = $request->nombre;
         $usuario->apellido = $request->apellido;
         $usuario->email = $request->email;

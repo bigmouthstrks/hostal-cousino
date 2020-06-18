@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Testimonio;
+use App\Checkin;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class FrontController extends Controller
+class CheckinController extends Controller
 {
-    public function __construct(){
-        $this->middleware('auth')->except(['index','about','rooms','services']);
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -19,8 +14,7 @@ class FrontController extends Controller
      */
     public function index()
     {
-        $testimonios = Testimonio::all();
-        return view('front.index',compact('testimonios'));
+        //
     }
 
     /**
@@ -28,9 +22,9 @@ class FrontController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function about()
+    public function create()
     {
-        return view('front.about');
+        //
     }
 
     /**
@@ -39,30 +33,29 @@ class FrontController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function rooms()
+    public function store(Request $request)
     {
-        $tipos_habitaciones = DB::select('select distinct tipo, cant_camas, precio_noche from habitaciones');
-        return view('front.rooms',compact('tipos_habitaciones'));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function services()
+    public function show(Checkin $checkin)
     {
-        return view('front.services');
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Checkin $checkin)
     {
         //
     }
@@ -71,10 +64,10 @@ class FrontController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Checkin $checkin)
     {
         //
     }
@@ -82,10 +75,10 @@ class FrontController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Checkin  $checkin
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Checkin $checkin)
     {
         //
     }

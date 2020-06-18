@@ -44,7 +44,7 @@
 		</ul>
 		</div>
 	</div>
-	<span class="text-white">Bienvenido, {{Auth::user()->nombre}}! | {{Auth::user()->ID_usuario}}</span>
+	<span class="text-white">Bienvenido, {{Auth::user()->nombre}}! | {{Auth::user()->id_usuario}}</span>
 </nav>
 @else
 <nav class="nav navbar navbar-expand-lg navbar-light bg-dark">
@@ -82,7 +82,7 @@
                 		<a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
                 		<a class="dropdown-item" href="{{ route('habitaciones.index') }}">Habitaciones</a>
                 		<a class="dropdown-item" href="#">Estadías</a>
-                		<a class="dropdown-item" href="#">Reservas</a>
+                		<a class="dropdown-item" href="{{ route('reservas.index') }}">Reservas</a>
 						<a class="dropdown-item" href="{{ route('create.funcionario') }}">Registrar Funcionario</a>
 	        		</div>
 	    		</li>
@@ -92,7 +92,7 @@
 			</ul>
 	  	</div>
 	</div>
-	<span class="text-white">{{Auth::user()->nombre}} {{Auth::user()->apellido}} | {{Auth::user()->ID_usuario}}</span>
+	<span class="text-white">{{Auth::user()->nombre}} {{Auth::user()->apellido}} | {{Auth::user()->id_usuario}}</span>
 </nav>
 @endif
 

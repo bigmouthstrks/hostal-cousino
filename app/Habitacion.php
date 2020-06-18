@@ -8,9 +8,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Habitacion extends Model
 {
     use SoftDeletes;
-    public $table = 'habitaciones';
-    public $fillable = ['tipo','estado','cant_camas','precio_noche','numero','imagen'];
-    public $primaryKey = 'id_habitacion';
-    public $keyType = 'string';
-    public $timestamps = false;
+    protected $table = 'habitaciones';
+    protected $fillable = ['tipo','estado','cant_camas','precio_noche','numero','imagen'];
+    protected $primaryKey = 'id_habitacion';
+    protected $keyType = 'string';
+    public $timestamps = true;
+    protected $guarded = ['id_habitacion'];
+
+    public function reserva(){
+        $this->hasMany('App\Reserva','id_reserva');
+    }
 }

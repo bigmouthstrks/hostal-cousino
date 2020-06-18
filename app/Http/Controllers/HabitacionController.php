@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Habitacion;
 use App\Imagen;
-
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HabitacionRequest;
 use App\Http\Requests\HabitacionEditRequest;
@@ -74,6 +73,7 @@ class HabitacionController extends Controller
         $habitacion->precio_noche = $request->precio_noche;
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
+        $habitacion->descripcion = $request->descripcion;
         $habitacion->imagen = $request->imagen->store('public/imagenes');
 
         // Almacenar imágenes de la respectiva habitación //
@@ -145,6 +145,7 @@ class HabitacionController extends Controller
         $habitacion->precio_noche = $request->precio_noche;
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
+        $habitacion->descripcion = $request->descripcion;
         $habitacion->imagen = $request->imagen->store('public/imagenes');
 
         // Almacenar imágenes de la respectiva habitación //

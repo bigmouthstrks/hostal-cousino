@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Testimonio extends Model
 {
-    public $table = 'testimonios';
-    public $fillable = ['calificacion','contenido','fecha'];
-    public $primaryKey = 'id_testimonio';
-    public $keyType = 'string';
+    protected $table = 'testimonios';
+    protected $fillable = ['calificacion','contenido','fecha'];
+    protected $primaryKey = 'id_testimonio';
+    protected $keyType = 'string';
+    public $timestamps = false;
 }

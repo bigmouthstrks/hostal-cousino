@@ -3,7 +3,7 @@
 
 	<h2 class="title text-center">Reservar</h2>
 	<div class="container row d-flex justify-content-center">
-		<div class="col-6 border rounded p-3">
+		<div class="col-6 border rounded p-3 shadow mb-4">
             {{-- Mostrar mensajes de error si existen --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -21,19 +21,19 @@
                 @csrf
 				<div class="form-group">
 					<label for="fecha_llegada">Fecha llegada:</label>
-					<input type="date" class="form-control" id="fecha_llegada">
+					<input type="date" class="form-control" id="fecha_llegada" name="fecha_llegada">
 				</div>
 				<div class="form-group">
 					<label for="fecha_salida">Fecha salida:</label>
-					<input type="date" class="form-control" id="fecha_salida">
+					<input type="date" class="form-control" id="fecha_salida" name="fecha_salida">
 				</div>
 				<div class="form-group">
 					<label for="cantidad_adultos">Cantidad de Adultos</label>
-					<input type="number" max="5" min="1" class="form-control" id="cantidad_adultos" placeholder="Cantidad de adultos">
+					<input type="number" max="5" min="1" class="form-control" id="cantidad_adultos" placeholder="Cantidad de adultos" name="cantidad_adultos">
 				</div>
 				<div class="form-group">
 					<label for="cantidad_niños">Cantidad de Niños</label>
-					<input type="number" max="2" min="0" class="form-control" id="cantidad_niños" placeholder="Cantidad de niños">
+					<input type="number" max="2" min="0" class="form-control" id="cantidad_niños" placeholder="Cantidad de niños" name="cantidad_niños">
 				</div>
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>

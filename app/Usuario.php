@@ -10,6 +10,10 @@ class Usuario extends Authenticable
 {
     use Notifiable;
     protected $table = "usuarios";
-    protected $primaryKey = "ID_usuario";
+    protected $primaryKey = "id_usuario";
     public $keyType = 'string';
+
+    public function reserva(){
+        return $this->hasMany('App\Reserva','id_usuario');
+    }
 }

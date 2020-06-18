@@ -2,7 +2,7 @@
 @section('main')
 
 	<h2 class="title text-center">Servicios</h2>
-	<div class="row m-1 rounded border p-2">
+	<div class="row m-1 rounded border p-2 shadow mb-4">
 		<div class="col-4">
 			<img src="{{ asset('images/food_service.jpg') }}" class="w-100">
 		</div>
@@ -13,7 +13,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="row m-1 rounded border p-2">
+	<div class="row m-1 rounded border p-2 shadow mb-4">
 		<div class="col-8 p-5">
 			<div>
 				<h3 class="text-center">Conexión Wifi</h4>

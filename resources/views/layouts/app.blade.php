@@ -36,7 +36,7 @@
         @include('partials.toolbar')
 
         --}}
-        <div class="container border rounded h-100 w-100 mb-2 mt-2 pt-2 pb-2" id="view-content">
+        <div class="container h-100 w-100 mb-2 mt-2 pt-2 pb-2" id="view-content">
             @yield('main')
         </div>
         @include('partials.footer')

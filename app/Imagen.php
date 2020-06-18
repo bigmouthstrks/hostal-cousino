@@ -6,9 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Imagen extends Model
 {
-    public $table = 'imagenes';
+    protected $table = 'imagenes';
     protected $fillable = ['nombre_imagen','ruta'];
-    public $primaryKey = 'id_imagen';
-    public $keyType = 'string';
+    protected $primaryKey = 'id_imagen';
+    protected $keyType = 'string';
     public $timestamps = false;
+    protected $guarded = ['id_imagen'];
 }

@@ -3,7 +3,7 @@
 
     <h2 class="text-center">Modificar Habitación</h2>
     <div class="container row d-flex justify-content-center">
-		<div class="col-6 border rounded p-2">
+		<div class="col-6 border rounded p-2 shadow mb-4">
             {{-- Mostrar mensajes de error si existen --}}
             @if ($errors->any())
                 <div class="alert alert-danger">
@@ -50,7 +50,7 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text">$</div>
                           </div>
-                          <input type="number" class="form-control @error('precio_noche') is-invalid @enderror  " id="precio_noche" name="precio_noche" placeholder="Precio" value="{{ $habitacion->precio_noche }}">
+                          <input type="number" min="15000" class="form-control @error('precio_noche') is-invalid @enderror  " id="precio_noche" name="precio_noche" placeholder="Precio" value="{{ $habitacion->precio_noche }}">
                         </div>
                       </div>
                     <div class="form-group col-4">
@@ -86,12 +86,16 @@
 						</select>
 					  </div>
                 </div>
+                <div class="form-group">
+                    <label for="descripcion">Descripción:</label>
+                    <textarea class="form-control" placeholder="Escriba aquí una descripción para la habitación" id="descripcion" name="descripcion" rows="3" value="{{old('descripcion')}}"></textarea>
+                </div>
                 <div class="container p-2 border rounded mt-2 mb-2">
-                    <label>Imágenes:</label>
+                    <label>Imágen:</label>
                     <div class="input-group mb-3">
                         <div class="custom-file">
                         <input type="file" class="custom-file-input @error('imagen') is-invalid @enderror" id="imagen" name="imagen" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="imagen">Imágen</label>
+                        <label class="custom-file-label" for="imagen" data-browse="Examinar">Imagen</label>
                         </div>
                     </div>
                     {{--

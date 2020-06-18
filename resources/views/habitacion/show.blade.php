@@ -1,18 +1,19 @@
 @extends('layouts.app')
 @section('main')
 
-<div class="card flex-row flex-wrap m-2">
-    <div class="card-header border-0">
-        <img src="{{ Storage::url($habitacion->imagen) }}" alt="Imágen">
+<div class="shadow card flex-row flex-wrap m-2 row">
+    <div class="card-header border-0 col-8">
+        <img src="{{ Storage::url($habitacion->imagen) }}" class="img-fluid" alt="Imágen habitación">
     </div>
-    <div class="card-block px-2 p-5">
+    <div class="card-block px-2 p-5 col-4">
         <h4 class="card-title"><strong>{{ $habitacion->id_habitacion }}</strong></h4>
+        <p class="text-secondary">{{ $habitacion->descripcion }}</p>
         <p>Cantidad de camas: <strong>{{ $habitacion->cant_camas}}</strong></p>
         <p>Tipo de habitación: <strong>{{ $habitacion->tipo }}</strong></p>
         <p>Tamaño: <strong>{{$habitacion->tamaño}}</strong></p>
         <p>Estado: <strong>{{ Str::ucfirst($habitacion->estado) }}</strong></p>
         <p>Número: <strong>{{$habitacion->numero}}</strong></p>
-        <h5>Precio por noche: <b>${{ $habitacion->precio_noche }}</b></h5>
+        <h5>Precio por noche: <b>$ {{ $habitacion->precio_noche / 1000  . '.000' }}</b></h5>
 
         <div class="d-flex justify-content-center p-2">
             <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#confirmacion">Eliminar</button>

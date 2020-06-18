@@ -10,7 +10,7 @@
 	  	</ol>
   		<div class="carousel-inner">
 		    <div class="carousel-item active">
-		      	<img class="d-block w-100" src="{{ asset('images/bar2.jpg') }}" alt="First slide">
+		      	<img class="d-block w-100" src="{{ asset('images/room_3.jpg') }}" alt="First slide">
 	      		<div class="carousel-caption carousel-caption-bg d-none d-md-block">
 		      		<h4>Servicio de bar</h4>
 		      		<p>¿Quieres compartir con amigos, amigas o familia? Acércate a nuestro bar y pasa un momento inolvidable.</p>

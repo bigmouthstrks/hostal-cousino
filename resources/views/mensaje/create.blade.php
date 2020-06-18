@@ -7,7 +7,7 @@
 	--}}
 	<h1 class="title text-center">Envíanos un mensaje</h1>
 	<div class="container row justify-content-center">
-		<div class="d-inline col-12 col-md-8 col-lg-6 border rounded">
+		<div class="d-inline col-12 col-md-8 col-lg-6 border rounded shadow mb-4">
             {{-- Mostrar mensajes de error si existen --}}
             @if ($errors->any())
                 <div class="alert alert-danger">

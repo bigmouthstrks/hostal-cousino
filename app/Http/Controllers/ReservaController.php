@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservaEditRequest;
 use App\Http\Requests\ReservaRequest;
-use Illuminate\Http\Request;
 use App\Reserva;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReservaController extends Controller
 {
@@ -16,7 +17,8 @@ class ReservaController extends Controller
      */
     public function index()
     {
-        //
+        $reservas = Reserva::all();
+        return view('reserva.index',compact('reservas'));
     }
 
     /**
@@ -37,15 +39,48 @@ class ReservaController extends Controller
      */
     public function store(ReservaRequest $request)
     {
-        $reserva = new Reserva();
+
         /* Obtener RUT/PASAPORTE de pasajero */
+
+        /* Generar id_reserva */
+        $reservas = DB::select('SELECT * FROM reservas');
+        $cantidad_reservas = 0;
+
+        foreach ($reservas as $reserva) {
+            $cantidad_reservas = $cantidad_reservas + 1;
+        }
+
+        // Se genera el código de Habitación //
+        $valor_numerico = $cantidad_reservas + 1;
+        $id_reserva = 'RES';
+        $parte_numerica = '';
+
+        if ($valor_numerico < 10){
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100){
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99) {
+            $parte_numerica = '';
+        }
+
+        $id_reserva = $id_reserva . $parte_numerica . $valor_numerico;
+
+
+        $reserva = new Reserva();
+        $reserva->id_reserva = $id_reserva;
         $reserva->estado = 'Activa';
-        $reserva->fecha_realizacion = date("YYYY/mm/dd");
-        $reserva->hora_realizacion = date("hh:mm:ss");
-        $reserva->fecha_llegada = $request->fecha_llegada;
-        $reserva->fecha_salida = $request->fecha_salida;
+        $reserva->inicio = $request->fecha_llegada;
+        $reserva->termino = $request->fecha_salida;
+
         /* Obtener ID_USUARIO */
+
+        $usuario = Auth::user();
+        $reserva->id_usuario = $usuario->id_usuario;
+
         /* Obtener ID_ESTADIA */
+
         $reserva->save();
         return back()->with('success','¡Reserva registrada con éxito!');
     }
