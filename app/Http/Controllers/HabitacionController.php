@@ -53,7 +53,6 @@ class HabitacionController extends Controller
         $id_habitacion = $id_habitacion . $parte_numerica . $valor_numerico;
 
         return view('habitacion.create',compact('id_habitacion'));
-
     }
 
     /**

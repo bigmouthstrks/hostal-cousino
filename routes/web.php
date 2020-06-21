@@ -23,6 +23,7 @@ Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.
 
 // Mensajes //
 Route::get('/mensajes/create','MensajeController@create')->name('mensajes.create');
+Route::post('/mensajes','MensajeController@send')->name('mensajes.send');
 
 // Vistas generales //
 Route::get('/','FrontController@index')->name('front.index');

@@ -3,16 +3,18 @@
 
     <div class="row">
         <div class="col-6 offset-3">
-            <div class="card mt-5">
-                <div class="card-header bg-secondary text-white">REGISTRAR USUARIO</div>
+            <div class="card mt-5 shadow mb-4">
+                <div class="card-header bg-secondary text-white">
+                    <h4>Registro de usuario</h4>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Ingrese sus datos</h5>
+                    <p class="card-title text-secondary">Ingrese sus datos</>
                     <form method="POST" action="{{ route('usuario.store') }}">
                         @csrf
                         <div class="form-group">
                             <label for="id_habitacion">ID usuario:</label>
                             <input type="text" class="form-control" name="id_usuario" value="{{ $id_usuario }}" placeholder="{{ $id_usuario }}" readonly>
-                        </div>    
+                        </div>
                         <div class="form-row">
                             <div class="col">
                                 <label for="nombre">Nombre:</label>
@@ -58,6 +60,6 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
 
 @endsection

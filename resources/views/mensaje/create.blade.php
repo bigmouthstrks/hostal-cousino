@@ -21,54 +21,28 @@
 
             @include('partials.flash-message')
 
-            <form class="p-4">
+            <form method="POST" action="{{ route('mensajes.send') }}" class="p-4">
+                @csrf
                 <div class="form-group">
                     <label for="nombre">Nombre</label>
-                    <input type="text" class="form-control" placeholder="Ingresa tu primer nombre" id="nombre">
+                    <input type="text" class="form-control @error('nombre') is-invalid @enderror" placeholder="Ingrese su primer nombre" id="nombre" name="nombre" value="{{ old('nombre') }}">
                 </div>
                 <div class="form-group">
                     <label for="correo">Correo Electrónico</label>
-                    <input type="email" class="form-control" placeholder="Ingresa una dirección de e-mail" id="correo">
-                    <small class="text-secondary">*Su correo elecrónico será utilizado sólo para el fin indicado</small>
+                    <input type="email" class="form-control @error('correo') is-invalid @enderror" placeholder="Ingresa una dirección de e-mail" id="correo" name="correo" value="{{ old('correo') }}">
                 </div>
                 <div class="form-group">
                     <label for="mensaje">Contenido del mensaje</label>
-                    <textarea class="form-control" placeholder="Escribe aquí tu mensaje para nosotros" id="mensaje" maxlength="200" rows="3"></textarea>
+                    <textarea class="form-control @error('mensaje') is-invalid @enderror" placeholder="Escribe aquí tu mensaje para nosotros" id="mensaje" name="mensaje" maxlength="200" rows="3" value="{{ old('mensaje') }}"></textarea>
                     <small class="form-text text-muted">Carácteres restantes:<span class="text-danger" id="CaracteresRestantes"></span></small>
                 </div>
-                <div class="d-flex justify-content-end">
-                    <button type="submit" class="btn btn-info mb-2 mr-1">Enviar</button>
-                    <button type="reset" class="btn btn-warning mb-2">Limpiar</button>
-                </div>
+                {{--<div class="d-flex justify-content-end">
+                </div>--}}
+
+                <button type="submit" class="btn btn-info mb-2 mr-1">Enviar</button>
+                <button class="btn btn-warning mb-2">Limpiar</button>
             </form>
 		</div>
 	</div>
-
-
-	{{--
-		Función para contar carácteres restantes del mensaje a enviar
-	--}}
-	<script type="text/javascript">
-
-		var max_caracteres = 200;
-		var mensaje_input = document.getElementById("mensaje");
-		var caracteres_restantes = document.getElementById("CaracteresRestantes");
-
-		caracteres_restantes.innerHTML = max_caracteres;
-
-		mensaje_input.addEventListener("keydown",contar);
-
-		function contar(e){
-			var cant_caracteres = mensaje_input.value.length;
-			if (cant_caracteres >= max_caracteres){
-				e.preventDefault();
-			} else{
-				caracteres_restantes.innerHTML = max_caracteres - (cant_caracteres-1);
-			}
-		}
-
-	</script>
-
-
 
 @endsection

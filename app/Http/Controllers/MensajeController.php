@@ -2,23 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Mensaje;
+use Exception;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class MensajeController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->except(['create']);
-    }
-
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+        $this->middleware('auth')->except(['create','send']);
     }
 
     /**
@@ -28,63 +20,22 @@ class MensajeController extends Controller
      */
     public function create()
     {
-
         return view('mensaje.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function send(Request $request)
     {
-        //
-    }
+        $datos = array(
+            'nombre' => $request->nombre,
+            'mensaje' => $request->mensaje,
+            'correo' => $request->correo,
+        );
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Mensaje  $Mensaje
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Mensaje $Mensaje)
-    {
-        //
-    }
+        Mail::send('mensaje.formato_mail', $datos, function ($message) {
+            $message->from('benjamin.caceres.ra@gmail.com', 'Hostal Cousiño');
+            $message->to('benjamin.caceres.ra@gmail.com', 'Hostal Cousiño')->subject('Hostal Cousiño - Nuevo Mensaje');
+        });
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Mensaje  $Mensaje
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Mensaje $Mensaje)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mensaje  $Mensaje
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Mensaje $Mensaje)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Mensaje  $Mensaje
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Mensaje $Mensaje)
-    {
-        //
+        return view('mensaje.create')->with('success','Mensaje enviado correctamente!');
     }
 }

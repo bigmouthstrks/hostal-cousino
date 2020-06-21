@@ -3,10 +3,12 @@
 
     <div class="row">
         <div class="col-6 offset-3">
-            <div class="card mt-5">
-                <div class="card-header bg-info text-white">INICIAR SESIÓN</div>
+            <div class="card mt-5 shadow mb-4">
+                <div class="card-header bg-info text-white">
+                    <h4>Iniciar Sesión</h4>
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">Ingrese sus datos</h5>
+                    <p class="card-title text-secondary">Ingrese sus datos</p>
                     <form method="POST" action="{{ route('login.usuario') }}">
                         @csrf
                         <div class="form-group">
@@ -40,11 +42,11 @@
                         @endif
                         {{-- FIN MENSAJES DE ERROR --}}
 
-                    </form>  
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-    
+
 
 @endsection

@@ -2,38 +2,39 @@
 @section('main')
 
 	<h2 class="title text-center">Inicio</h2>
-	<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+	<div id="carouselExampleIndicators" class="carousel slide shadow-lg mb-4" data-ride="carousel">
 	  	<ol class="carousel-indicators d-none d-md-flex">
 	    	<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
 		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
 	  	</ol>
   		<div class="carousel-inner">
+		    <div class="carousel-item">
+                <img class="d-block w-100" src="{{ asset('images/room_3.jpg') }}" alt="Second slide">
+                <div class="carousel-caption carousel-caption-bg d-none d-md-block">
+                    <h4>Comodidad a tu alcance</h4>
+                    <p>Reserva una habitación a tu medida en precio y espacio</p>
+                </div>
+                <!-- Vista de la leyenda desde un dispositivo móvil -->
+                <div class="d-md-none d-block">
+                    <h4>Comodidad a tu alcance</h4>
+                    <p>Reserva una habitación a tu medida en precio y espacio</p>
+                </div>
+          </div>
 		    <div class="carousel-item active">
-		      	<img class="d-block w-100" src="{{ asset('images/room_3.jpg') }}" alt="First slide">
+		      	<img class="d-block w-100" src="{{ asset('images/bar.jpg') }}" alt="First slide">
 	      		<div class="carousel-caption carousel-caption-bg d-none d-md-block">
 		      		<h4>Servicio de bar</h4>
 		      		<p>¿Quieres compartir con amigos, amigas o familia? Acércate a nuestro bar y pasa un momento inolvidable.</p>
-		      	</div>
+                </div>
+                <!-- Vista de la leyenda desde un dispositivo móvil -->
 		      	<div class="d-block d-md-none">
 		      		<h4>Servicio de bar</h4>
 		      		<p>¿Quieres compartir con amigos, amigas o familia? Acércate a nuestro bar y pasa un momento inolvidable.</p>
 		      	</div>
 		    </div>
 		    <div class="carousel-item">
-		      	<img class="d-block w-100" src="{{ asset('images/bar2.jpg') }}" alt="Second slide">
-		      	<div class="carousel-caption carousel-caption-bg d-none d-md-block">
-		      		<h4>Comodidad a tu alcance</h4>
-		      		<p>Reserva una habitación a tu medida en precio y espacio</p>
-	      		</div>
-	  	      	<!-- Vista de la leyenda desde un dispositivo móvil -->
-		      	<div class="d-md-none d-block">
-		      		<h4>Comodidad a tu alcance</h4>
-		      		<p>Reserva una habitación a tu medida en precio y espacio</p>
-		      	</div>
-		    </div>
-		    <div class="carousel-item">
-		      	<img class="d-block w-100" src="{{ asset('images/room2.jpg') }}" alt="Third slide">
+		      	<img class="d-block w-100" src="{{ asset('images/room.jpg') }}" alt="Third slide">
 		      	<div class="carousel-caption carousel-caption-bg d-none d-md-block">
 		      		<h4>Comodidad a tu alcance</h4>
 		      		<p>Reserva una habitación a tu medida en precio y espacio</p>

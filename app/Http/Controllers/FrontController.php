@@ -41,7 +41,7 @@ class FrontController extends Controller
      */
     public function rooms()
     {
-        $tipos_habitaciones = DB::select('select distinct tipo, cant_camas, precio_noche from habitaciones');
+        $tipos_habitaciones = DB::select('select distinct tipo, cant_camas, descripcion, precio_noche from habitaciones');
         return view('front.rooms',compact('tipos_habitaciones'));
     }
 
