@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <div class="card mt-5 shadow mb-4">
+                @include('partials.flash-message')
                 <div class="card-header bg-info text-white">
                     <h4>Iniciar Sesión</h4>
                 </div>
@@ -12,12 +13,12 @@
                     <form method="POST" action="{{ route('login.usuario') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email:</label>
+                            <label for="email">E-mail:</label>
                             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="nombre@ejemplo.com" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Ingrese su contraseña">
                         </div>
                         <div class="form-row">
                             <div class="col">

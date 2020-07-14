@@ -7,8 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Testimonio extends Model
 {
     protected $table = 'testimonios';
-    protected $fillable = ['calificacion','contenido','fecha'];
+    protected $fillable = ['calificacion','comentario','id_usuario'];
     protected $primaryKey = 'id_testimonio';
     protected $keyType = 'string';
-    public $timestamps = false;
+    public $timestamps = true;
+    protected $guarded = 'id_testimonio';
+
+    public function usuario(){
+        return $this->belongsTo('App\Usuario','id_usuario');
+    }
 }

@@ -1,16 +1,15 @@
 @extends('layouts.app')
-
 @section('main')
 
 	{{--
 		Funcionalidad que permite enviar un mensaje al hostal, dicho mensaje se mostrará en la bandeja de mensajes de los funcionarios del hostal
 	--}}
-	<h1 class="title text-center">Envíanos un mensaje</h1>
+	<h1 class="text-center">Envíanos un mensaje</h1>
 	<div class="container row justify-content-center">
-		<div class="d-inline col-12 col-md-8 col-lg-6 border rounded shadow mb-4">
+		<div class="d-inline col-12 col-md-8 col-lg-6 shadow rounded mb-4">
             {{-- Mostrar mensajes de error si existen --}}
             @if ($errors->any())
-                <div class="alert alert-danger">
+                <div class="alert alert-danger mt-2 mb-0">
                     <ul>
                         @foreach ($errors->all() as $error)
                             <li>{{ $error }}</li>
@@ -33,16 +32,13 @@
                 </div>
                 <div class="form-group">
                     <label for="mensaje">Contenido del mensaje</label>
-                    <textarea class="form-control @error('mensaje') is-invalid @enderror" placeholder="Escribe aquí tu mensaje para nosotros" id="mensaje" name="mensaje" maxlength="200" rows="3" value="{{ old('mensaje') }}"></textarea>
-                    <small class="form-text text-muted">Carácteres restantes:<span class="text-danger" id="CaracteresRestantes"></span></small>
+                    <textarea class="form-control @error('mensaje') is-invalid @enderror" placeholder="Escribe aquí tu mensaje para nosotros" id="mensaje" name="mensaje" rows="3" value="{{ old('mensaje') }}"></textarea></div>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-info mb-2 mr-1">Enviar</button>
+                    <button class="btn btn-warning mb-2">Limpiar</button>
                 </div>
-                {{--<div class="d-flex justify-content-end">
-                </div>--}}
-
-                <button type="submit" class="btn btn-info mb-2 mr-1">Enviar</button>
-                <button class="btn btn-warning mb-2">Limpiar</button>
             </form>
 		</div>
-	</div>
+    </div>
 
 @endsection

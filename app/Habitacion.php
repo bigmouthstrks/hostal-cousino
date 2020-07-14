@@ -13,9 +13,9 @@ class Habitacion extends Model
     protected $primaryKey = 'id_habitacion';
     protected $keyType = 'string';
     public $timestamps = true;
-    protected $guarded = ['id_habitacion'];
+    protected $guarded = 'id_habitacion';
 
     public function reserva(){
-        $this->hasMany('App\Reserva','id_reserva');
+        return $this->hasMany('App\Reserva','id_reserva');
     }
 }

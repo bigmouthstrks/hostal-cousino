@@ -4,6 +4,9 @@ use Illuminate\Support\Facades\Route;
 
 // Testimonios //
 Route::get('/testimonios/index','TestimonioController@index')->name('testimonios.index');
+Route::get('/testimonios/create','TestimonioController@create')->name('testimonios.create');
+Route::post('/testimonios','TestimonioController@store')->name('testimonios.store');
+Route::get('/testimonios/{testimonio}','TestimonioController@show')->name('testimonios.show');
 
 // Habitaciones //
 Route::get('/habitaciones/create','HabitacionController@create')->name('habitaciones.create');
@@ -30,6 +33,7 @@ Route::get('/','FrontController@index')->name('front.index');
 Route::get('/about','FrontController@about')->name('front.about');
 Route::get('/rooms','FrontController@rooms')->name('front.rooms');
 Route::get('/services','FrontController@services')->name('front.services');
+Route::get('/perfil','FrontController@profile')->name('front.profile');
 
 // Usuario //
 Route::view('login', 'usuario.login')->name('login');
@@ -39,5 +43,6 @@ Route::post('login/usuario', 'UsuarioController@login')->name('login.usuario');
 Route::get('logout/usuario','UsuarioController@logout')->name('logout.usuario');
 Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuario.edit');
 
+// Funcionarios //
 Route::get('create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');
 Route::post('funcionario','UsuarioController@store_funcionario')->name('funcionario.store');

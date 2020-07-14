@@ -32,7 +32,7 @@
 	            <i class="fas fa-user-circle mr-1"></i> Mi Cuenta
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	            <a class="dropdown-item" href="#">Perfil</a>
+	            <a class="dropdown-item" href="{{ route('front.profile') }}">Perfil</a>
                 <a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
                 <a class="dropdown-item" href="#">Estadías</a>
                 <a class="dropdown-item" href="#">Reservas</a>
@@ -44,7 +44,7 @@
 		</ul>
 		</div>
 	</div>
-	<span class="text-white">Bienvenido, {{Auth::user()->nombre}}! | {{Auth::user()->id_usuario}}</span>
+	<span class="text-white">Bienvenido(a), {{Auth::user()->nombre}}!</span>
 </nav>
 @else
 <nav class="nav navbar navbar-expand-lg navbar-light bg-dark">

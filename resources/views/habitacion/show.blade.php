@@ -2,7 +2,7 @@
 @section('main')
 
 <div class="shadow card flex-row flex-wrap m-2 row">
-    <div class="card-header border-0 col-8">
+    <div class="mt-5 border-0 col-8">
         <img src="{{ Storage::url($habitacion->imagen) }}" class="img-fluid" alt="Imágen habitación">
     </div>
     <div class="card-block px-2 p-5 col-4">

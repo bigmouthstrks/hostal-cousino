@@ -4,6 +4,7 @@
     <div class="row">
         <div class="col-6 offset-3">
             <div class="card mt-5 shadow mb-4">
+                @include('partials.flash-message')
                 <div class="card-header bg-secondary text-white">
                     <h4>Registro de usuario</h4>
                 </div>
@@ -18,20 +19,24 @@
                         <div class="form-row">
                             <div class="col">
                                 <label for="nombre">Nombre:</label>
-                                <input type="text" class="form-control  @error('nombre') is-invalid @enderror" maxlength="50" id="nombre" name="nombre" value="{{ old('nombre') }}">
+                                <input type="text" class="form-control  @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Primer Nombre">
                             </div>
                             <div class="col">
                                 <label for="apellido">Apellido:</label>
-                                <input type="text" class="form-control @error('apellido') is-invalid @enderror" maxlength="50" id="apellido" name="apellido" value="{{ old('apellido') }}">
+                                <input type="text" class="form-control @error('apellido') is-invalid @enderror" id="apellido" name="apellido" value="{{ old('apellido') }}" placeholder="Apellido Paterno">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" maxlength="50" id="email" name="email" placeholder="nombre@ejemplo.com" value="{{ old('email') }}">
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="nombre@ejemplo.com" value="{{ old('email') }}">
                         </div>
                         <div class="form-group">
                             <label for="password">Contraseña:</label>
-                            <input type="password" class="form-control @error('password') is-invalid @enderror" maxlength="50" id="password" name="password">
+                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" placeholder="Ingrese su contraseña">
+                        </div>
+                        <div class="form-group">
+                            <label for="password-confirmation">Confirmar contraseña:</label>
+                            <input type="password" class="form-control @error('password_confirmation') is-invalid @enderror" id="password_confirmation" name="password_confirmation" placeholder="Confirme su contraseña">
                         </div>
                         <div class="form-row">
                             <div class="col">
@@ -41,8 +46,6 @@
                                 <button type="submit" class="btn btn-secondary">Registrar Usuario</button>
                             </div>
                         </div>
-
-                        <h5></h5>
 
                         {{-- MENSAJES DE ERROR --}}
                         @if($errors->any())
@@ -55,6 +58,7 @@
                         </div>
                         @endif
                         {{-- FIN MENSAJES DE ERROR --}}
+
 
                     </form>
                 </div>

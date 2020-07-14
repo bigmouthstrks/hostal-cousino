@@ -16,21 +16,13 @@ class UsuarioController extends Controller
         $this->middleware('auth')->except(['login','create','store']);
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         //
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         $usuarios = DB::select('SELECT * FROM usuarios');
@@ -93,12 +85,6 @@ class UsuarioController extends Controller
         return view('usuario.create_funcionario',compact('id_funcionario'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(RegisterUsuarioRequest $request)
     {
         $usuario = new Usuario();
@@ -109,7 +95,8 @@ class UsuarioController extends Controller
         $usuario->password = Hash::make($request->password);
         $usuario->tipo = 'U';
         $usuario->save();
-        return view('usuario.login');
+
+        return redirect()->route('login')->with('success','¡Registro realizado con éxito!');
     }
 
     public function store_funcionario(RegisterUsuarioRequest $request)
@@ -122,49 +109,25 @@ class UsuarioController extends Controller
         $usuario->password = Hash::make($request->password);
         $usuario->tipo = 'F';
         $usuario->save();
-        return redirect()->route('front.index');
+
+        return back()->with('success','¡Registro realizado con éxito!');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function show(Usuario $usuario)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Usuario $usuario)
     {
         return view('usuario.edit', compact('usuario'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Usuario $usuario)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Usuario  $usuario
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Usuario $usuario)
     {
         //

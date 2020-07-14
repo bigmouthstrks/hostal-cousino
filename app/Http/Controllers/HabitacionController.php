@@ -10,25 +10,15 @@ use App\Http\Requests\HabitacionEditRequest;
 
 class HabitacionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $habitaciones = Habitacion::all();
         return view('habitacion.index',compact('habitaciones'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        $habitaciones = DB::select('SELECT * FROM habitaciones');
+        $habitaciones = DB::select('select * from habitaciones');
         $cantidad_habitaciones = 0;
 
         foreach ($habitaciones as $habitacion) {
@@ -55,12 +45,6 @@ class HabitacionController extends Controller
         return view('habitacion.create',compact('id_habitacion'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(HabitacionRequest $request)
     {
         // Registrar habitación y sus respectivos datos en la base de datos //
@@ -103,23 +87,11 @@ class HabitacionController extends Controller
         return back()->with('success','Habitación creada exitosamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Habitacion  $habitacion
-     * @return \Illuminate\Http\Response
-     */
     public function show(Habitacion $habitacion)
     {
         return view('habitacion.show', compact('habitacion'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Habitacion  $habitacion
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Habitacion $habitacion)
     {
         $estados = array('Disponible','Ocupada','Bloqueada');
@@ -129,13 +101,6 @@ class HabitacionController extends Controller
         return view('habitacion.edit', compact('habitacion','estados','tipos_hab','tamaños'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Habitacion  $habitacion
-     * @return \Illuminate\Http\Response
-     */
     public function update(HabitacionEditRequest $request, Habitacion $habitacion)
     {
         $habitacion->estado = $request->estado;
@@ -175,12 +140,6 @@ class HabitacionController extends Controller
         return redirect()->route('habitaciones.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Habitacion  $habitacion
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Habitacion $habitacion)
     {
         $habitacion->delete();

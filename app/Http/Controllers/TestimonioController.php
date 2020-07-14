@@ -2,83 +2,83 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\TestimonioRequest;
 use App\Testimonio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class TestimonioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $testimonios = Testimonio::all();
         return view('testimonio.index',compact('testimonios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        // Obtener ID del usuario actual //
+        $user = Auth::user();
+        $id_usuario = $user->id_usuario;
+
+        $testimonios = DB::select('select * from testimonios');
+        $cantidad_testimonios = 0;
+
+        foreach ($testimonios as $testimonio){
+            $cantidad_testimonios = $cantidad_testimonios + 1;
+        }
+
+        // Se genera el código de Habitación //
+        $valor_numerico = $cantidad_testimonios + 1;
+        $id_testimoino = 'TES';
+        $parte_numerica = '';
+
+        if ($valor_numerico < 10){
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100){
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99){
+            $parte_numerica = '';
+        }
+
+        $id_testimonio = $id_testimoino . $parte_numerica . $valor_numerico;
+
+        return view('testimonio.create', compact('id_testimonio','id_usuario'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(TestimonioRequest $request)
     {
-        //
+        // Registrar testimonio y un respectivos datos en la base de datos //
+        $testimonio = new Testimonio();
+        $testimonio->id_testimonio = $request->id_testimonio;
+        $testimonio->id_usuario = $request->id_usuario;
+        $testimonio->calificacion = $request->calificacion;
+        $testimonio->comentario = $request->comentario;
+
+        $testimonio->save();
+        return back()->with('success','Testimonio registrado con éxito');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Testimonio  $testimonio
-     * @return \Illuminate\Http\Response
-     */
     public function show(Testimonio $testimonio)
     {
-        //
+        return view('testimonio.show', compact('testimonio'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Testimonio  $testimonio
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Testimonio $testimonio)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Testimonio  $testimonio
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Testimonio $testimonio)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Testimonio  $testimonio
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Testimonio $testimonio)
     {
         //

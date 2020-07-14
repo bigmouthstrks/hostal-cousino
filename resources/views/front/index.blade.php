@@ -1,16 +1,28 @@
 @extends('layouts.app')
 @section('main')
 
-	<h2 class="title text-center">Inicio</h2>
 	<div id="carouselExampleIndicators" class="carousel slide shadow-lg mb-4" data-ride="carousel">
 	  	<ol class="carousel-indicators d-none d-md-flex">
 	    	<li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
 		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
 	  	</ol>
   		<div class="carousel-inner">
 		    <div class="carousel-item">
-                <img class="d-block w-100" src="{{ asset('images/room_3.jpg') }}" alt="Second slide">
+                <img class="d-block w-100" src="{{ asset('images/home_carousel/lobby.jpg') }}" alt="First slide">
+                <div class="carousel-caption carousel-caption-bg d-none d-md-block">
+                    <h4>¿Espera a alguien?</h4>
+                    <p>Reúnase en nuestro lobby</p>
+                </div>
+                <!-- Vista de la leyenda desde un dispositivo móvil -->
+                <div class="d-md-none d-block">
+                    <h4>Comodidad a tu alcance</h4>
+                    <p>Reserva una habitación a tu medida en precio y espacio</p>
+                </div>
+            </div>
+		    <div class="carousel-item active">
+                <img class="d-block w-100" src="{{ asset('images/home_carousel/comfort.jpg') }}" alt="Second slide">
                 <div class="carousel-caption carousel-caption-bg d-none d-md-block">
                     <h4>Comodidad a tu alcance</h4>
                     <p>Reserva una habitación a tu medida en precio y espacio</p>
@@ -20,12 +32,12 @@
                     <h4>Comodidad a tu alcance</h4>
                     <p>Reserva una habitación a tu medida en precio y espacio</p>
                 </div>
-          </div>
-		    <div class="carousel-item active">
-		      	<img class="d-block w-100" src="{{ asset('images/bar.jpg') }}" alt="First slide">
+            </div>
+		    <div class="carousel-item">
+		      	<img class="d-block w-100" src="{{ asset('images/home_carousel/pool.jpg') }}" alt="Third slide">
 	      		<div class="carousel-caption carousel-caption-bg d-none d-md-block">
-		      		<h4>Servicio de bar</h4>
-		      		<p>¿Quieres compartir con amigos, amigas o familia? Acércate a nuestro bar y pasa un momento inolvidable.</p>
+		      		<h4>Espacios compartidos de lujo</h4>
+		      		<p>Tome el sol en las comodidades de nuestro patio, donde encontrará piscinas de lujo en un tranquilo y elegante espacio compartido</p>
                 </div>
                 <!-- Vista de la leyenda desde un dispositivo móvil -->
 		      	<div class="d-block d-md-none">
@@ -34,10 +46,10 @@
 		      	</div>
 		    </div>
 		    <div class="carousel-item">
-		      	<img class="d-block w-100" src="{{ asset('images/room.jpg') }}" alt="Third slide">
+		      	<img class="d-block w-100" src="{{ asset('images/home_carousel/enjoy-city.jpg') }}" alt="Fourth slide">
 		      	<div class="carousel-caption carousel-caption-bg d-none d-md-block">
-		      		<h4>Comodidad a tu alcance</h4>
-		      		<p>Reserva una habitación a tu medida en precio y espacio</p>
+		      		<h4>Disfrute de la ciudad</h4>
+		      		<p>Conozca los lugares más importantes y atractivos que nos rodean, gracias a nuestra excelente ubicación</p>
 	      		</div>
 	  	      	<!-- Vista de la leyenda desde un dispositivo móvil -->
 		      	<div class="d-md-none d-block">
@@ -56,22 +68,24 @@
   		</a>
 	</div>
 	<hr>
-	<h2 class="title text-center">Testimonios</h2>
-	<div class="card-group">
+    <h2 class="title text-center">Testimonios</h2>
+    <hr>
+	<div class="row p-2">
 		@foreach($testimonios as $testimonio)
-		<div class="card">
-			<div class="card-body">
-				<h5 class="card-title">{{ $testimonio->id_testimonio }}</h5>
-				<p class="card-text">
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-					<i class="fas fa-star"></i>
-				</p>
-				<p class="card-text">{{ $testimonio->contenido }}</p>
-			</div>
-		</div>
+            <div class="shadow col- mr-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ $testimonio->usuario->nombre . ' ' . $testimonio->usuario->apellido }}</h5>
+                    <div>
+                        <p class="card-text">
+                            @for ($i=0; $i <= $testimonio->calificacion; $i++)
+                                <i class="fi-xnluxl-star"></i>
+                            @endfor
+                        </p>
+                        <p>{{ $testimonio->comentario }}</p>
+                        <p class="text-secondary">{{ 'Fecha:' . date('d-m-Y', strtotime($testimonio->created_at)) . ' Hora: ' . date('H:m', strtotime($testimonio->created_ad)) }}</p>
+                    </div>
+                </div>
+            </div>
 		@endforeach
 	</div>
 	<hr>
