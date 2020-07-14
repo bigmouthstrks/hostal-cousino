@@ -17,7 +17,6 @@ Route::get('/habitaciones/{habitacion}/edit','HabitacionController@edit')->name(
 Route::delete('/habitaciones/{habitacion}','HabitacionController@destroy')->name('habitaciones.destroy');
 Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('habitaciones.update');
 
-// ALOHAAAAA ESTO ES UNA PRUEBAAA //
 // Reservas //
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
 Route::get('/reservas/index','ReservaController@index')->name('reservas.index');
