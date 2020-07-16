@@ -33,7 +33,6 @@ Route::get('/','FrontController@index')->name('front.index');
 Route::get('/about','FrontController@about')->name('front.about');
 Route::get('/rooms','FrontController@rooms')->name('front.rooms');
 Route::get('/services','FrontController@services')->name('front.services');
-Route::get('/perfil','FrontController@profile')->name('front.profile');
 
 // Usuario //
 Route::view('login', 'usuario.login')->name('login');
@@ -41,7 +40,8 @@ Route::get('create/usuario','UsuarioController@create')->name('create.usuario');
 Route::post('usuario','UsuarioController@store')->name('usuario.store');
 Route::post('login/usuario', 'UsuarioController@login')->name('login.usuario');
 Route::get('logout/usuario','UsuarioController@logout')->name('logout.usuario');
-Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuario.edit');
+Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.edit');
+Route::put('usuarios/{usuario}','UsuarioController@update')->name('usuarios.update');
 
 // Funcionarios //
 Route::get('create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');

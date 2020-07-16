@@ -35,10 +35,4 @@ class FrontController extends Controller
         return view('front.services');
     }
 
-    public function profile()
-    {
-        $usuario_actual = Auth::user();
-        return view('front.profile', compact('usuario_actual'));
-    }
-
 }

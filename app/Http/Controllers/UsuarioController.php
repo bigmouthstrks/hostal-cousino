@@ -120,12 +120,20 @@ class UsuarioController extends Controller
 
     public function edit(Usuario $usuario)
     {
-        return view('usuario.edit', compact('usuario'));
+        $usuario_actual = Auth::user();
+        return view('usuario.edit', compact('usuario_actual'));
     }
 
     public function update(Request $request, Usuario $usuario)
     {
-        //
+        $usuario->direccion = $request->direccion;
+        $usuario->ciudad = $request->ciudad;
+        $usuario->pais = $request->pais;
+        $usuario->password = $request->password;
+        $usuario->email = $request->email;
+
+        $usuario->save();
+        return redirect()->route('front.index');
     }
 
     public function destroy(Usuario $usuario)

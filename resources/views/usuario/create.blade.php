@@ -12,11 +12,11 @@
                     <p class="card-title text-secondary">Ingrese sus datos</>
                     <form method="POST" action="{{ route('usuario.store') }}">
                         @csrf
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label for="id_habitacion">ID usuario:</label>
                             <input type="text" class="form-control" name="id_usuario" value="{{ $id_usuario }}" placeholder="{{ $id_usuario }}" readonly>
-                        </div>
-                        <div class="form-row">
+                        </div> --}}
+                        <div class="form-group form-row">
                             <div class="col">
                                 <label for="nombre">Nombre:</label>
                                 <input type="text" class="form-control  @error('nombre') is-invalid @enderror" id="nombre" name="nombre" value="{{ old('nombre') }}" placeholder="Primer Nombre">
