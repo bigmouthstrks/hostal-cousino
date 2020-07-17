@@ -22,9 +22,9 @@ class TestimonioController extends Controller
     {
         // Obtener ID del usuario actual //
         $user = Auth::user();
-        $id_usuario = $user->id_usuario;
+        $id_usuario_actual = $user->id_usuario;
 
-        $testimonios = DB::select('select * from testimonios');
+        $testimonios = Testimonio::all();
         $cantidad_testimonios = 0;
 
         foreach ($testimonios as $testimonio){
@@ -48,7 +48,7 @@ class TestimonioController extends Controller
 
         $id_testimonio = $id_testimoino . $parte_numerica . $valor_numerico;
 
-        return view('testimonio.create', compact('id_testimonio','id_usuario'));
+        return view('testimonio.create', compact('id_testimonio','id_usuario_actual'));
     }
 
     public function store(TestimonioRequest $request)
@@ -56,7 +56,7 @@ class TestimonioController extends Controller
         // Registrar testimonio y un respectivos datos en la base de datos //
         $testimonio = new Testimonio();
         $testimonio->id_testimonio = $request->id_testimonio;
-        $testimonio->id_usuario = $request->id_usuario;
+        $testimonio->usuario_id = $request->usuario_id;
         $testimonio->calificacion = $request->calificacion;
         $testimonio->comentario = $request->comentario;
 
@@ -67,11 +67,6 @@ class TestimonioController extends Controller
     public function show(Testimonio $testimonio)
     {
         return view('testimonio.show', compact('testimonio'));
-    }
-
-    public function edit(Testimonio $testimonio)
-    {
-        //
     }
 
     public function update(Request $request, Testimonio $testimonio)

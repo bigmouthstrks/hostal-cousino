@@ -18,6 +18,6 @@ class Usuario extends Authenticable
     }
 
     public function testimonio(){
-        return $this->hasMany('App\Testimonio','id_usuario');
+        return $this->hasMany('App\Testimonio');
     }
 }

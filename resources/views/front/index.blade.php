@@ -74,7 +74,7 @@
 		@foreach($testimonios as $testimonio)
             <div class="shadow col- mr-4">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $testimonio->usuario->nombre . ' ' . $testimonio->usuario->apellido }}</h5>
+                    <h5 class="card-title">{{ $testimonio->usuario_id }}</h5>
                     <div>
                         <p class="card-text">
                             @for ($i=0; $i <= $testimonio->calificacion; $i++)

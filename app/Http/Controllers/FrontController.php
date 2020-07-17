@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Testimonio;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 
 class FrontController extends Controller
 {
@@ -34,5 +32,4 @@ class FrontController extends Controller
     {
         return view('front.services');
     }
-
 }

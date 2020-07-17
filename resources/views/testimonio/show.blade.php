@@ -8,6 +8,7 @@
             <p>Fecha de realización: <strong>{{ $testimonio->created_at}}</strong></p>
             <p>Comentario: <strong>{{$testimonio->comentario}}</strong></p>
             <h5>Calificación: <b>{{ $testimonio->calificacion }}/5</b></h5>
+            <h5>Usuario: <b>{{ $testimonio->usuario->nombre }}</b></h5>
             <div class="p-2">
                 <button type="button" class="btn btn-danger mr-2" data-toggle="modal" data-target="#confirmacion">Eliminar</button>
                 <a href="{{ route('testimonios.index') }}" class="btn btn-warning">Volver</a>

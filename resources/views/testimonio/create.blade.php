@@ -25,8 +25,8 @@
 					<input type="text" class="form-control" name="id_testimonio" value="{{ $id_testimonio }}" placeholder="{{ $id_testimonio }}" readonly>
                 </div>
                 <div class="form-group">
-					<label for="id_usuario">ID Usuario:</label>
-					<input type="text" class="form-control" name="id_usuario" value="{{ $id_usuario }}" placeholder="{{ $id_usuario }}" readonly>
+					<label for="usuario_id">ID Usuario:</label>
+					<input type="text" class="form-control" name="usuario_id" value="{{ $id_usuario_actual }}" placeholder="{{ $id_usuario_actual }}" readonly>
                 </div>
                 <div class="form-group">
                     <label for="calificacion">Calificación</label>
