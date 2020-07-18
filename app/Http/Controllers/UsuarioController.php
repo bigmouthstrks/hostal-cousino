@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Usuario;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginUsuarioRequest;
 use App\Http\Requests\RegisterUsuarioRequest;
+use App\Http\Requests\UsuarioEditRequest;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
@@ -90,7 +90,8 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $usuario->id_usuario = $request->id_usuario;
         $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
+        $usuario->apellido_paterno = $request->apellido_paterno;
+        $usuario->apellido_materno = $request->apellido_materno;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->tipo = 'U';
@@ -104,7 +105,8 @@ class UsuarioController extends Controller
         $usuario = new Usuario();
         $usuario->id_usuario = $request->id_funcionario;
         $usuario->nombre = $request->nombre;
-        $usuario->apellido = $request->apellido;
+        $usuario->apellido_paterno = $request->apellido_paterno;
+        $usuario->apellido_materno = $request->apellido_materno;
         $usuario->email = $request->email;
         $usuario->password = Hash::make($request->password);
         $usuario->tipo = 'F';
@@ -124,13 +126,27 @@ class UsuarioController extends Controller
         return view('usuario.edit', compact('usuario_actual'));
     }
 
-    public function update(Request $request, Usuario $usuario)
+    public function update(UsuarioEditRequest $request, Usuario $usuario)
     {
-        $usuario->direccion = $request->direccion;
-        $usuario->ciudad = $request->ciudad;
-        $usuario->pais = $request->pais;
-        $usuario->password = $request->password;
-        $usuario->email = $request->email;
+        if ($request->direccion != $usuario->direccion){
+            $usuario->direccion = $request->direccion;
+        }
+
+        if ($request->ciudad != $usuario->ciudad){
+            $usuario->ciudad = $request->ciudad;
+        }
+
+        if ($request->pais != $usuario->pais){
+            $usuario->pais = $request->pais;
+        }
+
+        if ($request->password != $usuario->password){
+            $usuario->password = $request->password;
+        }
+
+        if ($request->email != $usuario->email){
+            $usuario->email = $request->email;
+        }
 
         $usuario->save();
         return redirect()->route('front.index');

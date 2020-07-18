@@ -1,7 +1,6 @@
 @extends('layouts.app')
 @section('main')
 
-
     <h2 class="text-center">Perfil de usuario</h2>
     <div class="container row justify-content-center m-2">
         <div class="col-8 d-inline shadow rounded pt-2 pb-4 pl-4 pr-4">
@@ -24,7 +23,7 @@
             <form class="rounded p-4" method="POST" action="{{ route('usuarios.update', Auth::user()->id_usuario) }}">
                 @csrf
                 @method('PUT')
-                <h3>{{ $usuario_actual->nombre }}  {{ $usuario_actual->apellido }}</h3>
+                <h3>{{ $usuario_actual->nombre . ' ' . $usuario_actual->apellido_paterno . ' ' . $usuario_actual->apellido_materno}}</h3>
                 <div class="form-group d-flex row">
                     <div class="col-12">
                         <label for="email">Correo Electrónico</label>
@@ -33,7 +32,7 @@
                         <input class="form-control" type="email" id="email" name="email" value="{{ $usuario_actual->email }}" readonly>
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-light text-info" id="edit-email" onclick="editarCampo('email')"><i class="fa fa-edit fa-lg"></i></button>
+                        <a class="btn btn-light text-info" id="edit-email" onclick="editarCampo('email');"><i class="fa fa-edit fa-lg"></i></a>
                     </div>
                 </div>
                 <div class="form-group d-flex row">
@@ -41,25 +40,25 @@
                         <label for="email">Contraseña</label>
                     </div>
                     <div class="col-10">
-                        <input class="form-control" onclick="editarCampo('password')" type="password" id="password" name="password" value="{{ $usuario_actual->password }}" readonly>
+                        <input class="form-control" type="password" id="password" name="password" value="{{ $usuario_actual->password }}" readonly>
                     </div>
                     <div class="col-2">
-                        <a class="btn btn-light text-info" href="#"><i class="fa fa-edit fa-lg"></i></a>
+                        <a class="btn btn-light text-info" onclick="editarCampo('password');" href="#"><i class="fa fa-edit fa-lg"></i></a>
                     </div>
                 </div>
                 <label for="email">Dirección</label>
                 <div class="form-group d-flex row">
                     <div class="col-5">
-                        <input class="form-control" type="text" id="ciudad" name="ciudad" value="" readonly>
+                        <input class="form-control" type="text" id="ciudad" name="ciudad" value="{{ $usuario_actual->ciudad}}" readonly>
                     </div>
                     <div class="col-5">
-                        <input class="form-control" type="text" id="pais" name="pais" value="{{-- $usuario_actual->password --}}" readonly>
+                        <input class="form-control" type="text" id="pais" name="pais" value="{{ $usuario_actual->pais }}" readonly>
                     </div>
                     <div class="col-2">
-                        <button class="btn btn-light text-info" id="edit-address" onclick="editarCampos('ciudad','pais','direccion')"><i class="fa fa-edit fa-lg"></i></button>
+                        <a class="btn btn-light text-info" id="edit-address" onclick="editarCampos('ciudad','pais','direccion');"><i class="fa fa-edit fa-lg"></i></a>
                     </div>
                     <div class="col-10">
-                        <input class="form-control mt-2" type="text" id="direccion" name="direccion" value="{{-- $usuario_actual->password --}}" readonly>
+                        <input class="form-control mt-2" type="text" id="direccion" name="direccion" value="{{ $usuario_actual->direccion }}" readonly>
                     </div>
                 </div>
 
@@ -82,7 +81,6 @@
             let campo3 = document.getElementById(field3);
 
             if (campo1.value == '' && campo2.value == '' && campo3.value == ''){
-                console.log('hola');
                 campo1.readOnly = false;
                 campo2.readOnly = false;
                 campo3.readOnly = false;

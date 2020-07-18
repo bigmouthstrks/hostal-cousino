@@ -25,7 +25,7 @@ class RegisterUsuarioRequest extends FormRequest
     {
         return [
             'nombre'                => 'required',
-            'apellido'              => 'required',
+            'apellido_paterno'      => 'required',
             'email'                 => 'required|unique:usuarios,email',
             'password'              => ['required','confirmed'],
             'password_confirmation' => ['required'],
@@ -35,7 +35,7 @@ class RegisterUsuarioRequest extends FormRequest
     public function messages(){
         return[
             'nombre.required'                 => 'Debe ingresar su nombre.',
-            'apellido.required'               => 'Debe ingresar su apellido.',
+            'apellido_paterno.required'               => 'Debe ingresar su apellido_paterno.',
             'email.required'                  => 'Debe ingresar un email.',
             'email.unique'                    => 'Este email ya se encuentra registrado.',
             'password.required'               => 'Debe ingresar la contraseña.',

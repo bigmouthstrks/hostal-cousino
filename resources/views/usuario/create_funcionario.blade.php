@@ -19,8 +19,8 @@
                                 <input type="text" class="form-control  @error('nombre') is-invalid @enderror" maxlength="50" id="nombre" name="nombre" value="{{ old('nombre') }}">
                             </div>
                             <div class="col">
-                                <label for="apellido">Apellido:</label>
-                                <input type="text" class="form-control @error('apellido') is-invalid @enderror" maxlength="50" id="apellido" name="apellido" value="{{ old('apellido') }}">
+                                <label for="apellido_paterno">Apellido:</label>
+                                <input type="text" class="form-control @error('apellido_paterno') is-invalid @enderror" maxlength="50" id="apellido_paterno" name="apellido_paterno" value="{{ old('apellido_paterno') }}">
                             </div>
                         </div>
                         <div class="form-group">

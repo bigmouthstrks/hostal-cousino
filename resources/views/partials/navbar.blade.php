@@ -92,7 +92,7 @@
 			</ul>
 	  	</div>
 	</div>
-	<span class="text-white">{{Auth::user()->nombre}} {{Auth::user()->apellido}} | {{Auth::user()->id_usuario}}</span>
+	<span class="text-white">{{Auth::user()->nombre}} {{Auth::user()->apellido_paterno}} | {{Auth::user()->id_usuario}}</span>
 </nav>
 @endif
 
