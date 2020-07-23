@@ -12,11 +12,6 @@ class MensajeController extends Controller
         $this->middleware('auth')->except(['create','send']);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         return view('mensaje.create');

@@ -44,5 +44,10 @@ Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.e
 Route::put('usuarios/{usuario}','UsuarioController@update')->name('usuarios.update');
 
 // Funcionarios //
-Route::get('create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');
+Route::get('/create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');
 Route::post('funcionario','UsuarioController@store_funcionario')->name('funcionario.store');
+
+// Informes //
+Route::get('/informes','InformeController@index')->name('informes.index');
+Route::post('/informes/create_mensual','InformeController@create_mensual')->name('informe.create_mensual');
+Route::post('/informes/create_anual','InformeController@create_anual')->name('informe.create_anual');
