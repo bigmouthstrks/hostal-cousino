@@ -10,6 +10,11 @@ use App\Http\Requests\HabitacionEditRequest;
 
 class HabitacionController extends Controller
 {
+    public function __construct(){
+        $this->middleware('funcionario');
+        //->except(['index'])
+    }
+
     public function index()
     {
         $habitaciones = Habitacion::all();
@@ -110,7 +115,7 @@ class HabitacionController extends Controller
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->descripcion = $request->descripcion;
-        $habitacion->imagen = $request->imagen->store('public/imagenes');
+        // $habitacion->imagen = $request->imagen->store('public/imagenes');
 
         // Almacenar imágenes de la respectiva habitación //
         /*

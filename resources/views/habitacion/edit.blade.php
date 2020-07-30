@@ -42,7 +42,7 @@
                 <div class="d-flex justify-content-around row">
                     <div class="form-group col-4">
                         <label for="cant_camas">Nº de Camas:</label>
-                        <input type="number" class="form-control @error('cant_camas') is-invalid @enderror" id="cant_camas" name="cant_camas" placeholder="Nº de camas" value="{{ $habitacion->cant_camas }}">
+                        <input type="number" class="form-control @error('cant_camas') is-invalid @enderror" min="1" max="5" id="cant_camas" name="cant_camas" placeholder="Nº de camas" value="{{ $habitacion->cant_camas }}">
                     </div>
                     <div class="col-4">
                         <label for="precio_noche">Precio por noche:</label>
@@ -55,7 +55,7 @@
                       </div>
                     <div class="form-group col-4">
                         <label for="numero">Número:</label>
-                        <input type="number" class="form-control @error('numero') is-invalid @enderror" id="numero" name="numero" placeholder="Número" value="{{ $habitacion->numero }}">
+                        <input type="number" class="form-control @error('numero') is-invalid @enderror" min="1" id="numero" name="numero" placeholder="Número" value="{{ $habitacion->numero }}">
                     </div>
                 </div>
 				<div class="form-group">
