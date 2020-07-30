@@ -77,16 +77,19 @@
                     <h5 class="card-title">{{ $testimonio->usuario_id }}</h5>
                     <div>
                         <p class="card-text">
-                            @for ($i=0; $i <= $testimonio->calificacion; $i++)
-                                <i class="fi-xnluxl-star"></i>
+                            @for ($i=0; $i <= $testimonio->calificacion-1; $i++)
+								<i class="fi-xnluxl-star"></i>
+								{{-- <h5>{{ $testimonio1->id_testimonio}}</h5> --}}
                             @endfor
                         </p>
-                        <p>{{ $testimonio->comentario }}</p>
+						<p>{{ $testimonio->comentario }}</p>
+						
                         <p class="text-secondary">{{ 'Fecha:' . date('d-m-Y', strtotime($testimonio->created_at)) . ' Hora: ' . date('H:m', strtotime($testimonio->created_ad)) }}</p>
                     </div>
-                </div>
+				</div>
             </div>
 		@endforeach
+		<p>{{ $testimonio1->id_testimonio }}</p>
 	</div>
 	<hr>
 	<div class="card-group">

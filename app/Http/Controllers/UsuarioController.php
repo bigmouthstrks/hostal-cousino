@@ -18,6 +18,8 @@ class UsuarioController extends Controller
 {
     public function __construct(){
         $this->middleware('auth')->except(['login','create','store']);
+
+        $this->middleware('funcionario')->only('create_funcionario');
     }
 
 
