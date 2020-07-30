@@ -27,14 +27,6 @@
 					<label for="fecha_salida">Fecha salida:</label>
 					<input type="date" class="form-control" id="fecha_salida" name="fecha_salida">
 				</div>
-				<div class="form-group">
-					<label for="cantidad_adultos">Cantidad de Adultos</label>
-					<input type="number" max="5" min="1" class="form-control" id="cantidad_adultos" placeholder="Cantidad de adultos" name="cantidad_adultos">
-				</div>
-				<div class="form-group">
-					<label for="cantidad_niños">Cantidad de Niños</label>
-					<input type="number" max="2" min="0" class="form-control" id="cantidad_niños" placeholder="Cantidad de niños" name="cantidad_niños">
-				</div>
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>
 				<button type="{{ route('front.index') }}" class="btn btn-danger">Cancelar</button>

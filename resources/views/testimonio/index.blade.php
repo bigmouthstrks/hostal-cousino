@@ -30,9 +30,6 @@
                                     <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('testimonios.show',$testimonio->id_testimonio) }}" class="btn btn-info">
                                         <i class="fas fa-info-circle"></i>
                                     </a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="#" class="btn btn-info">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
                                 </div>
                             </td>
                         </tr>
