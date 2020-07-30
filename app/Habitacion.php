@@ -9,7 +9,7 @@ class Habitacion extends Model
 {
     use SoftDeletes;
     protected $table = 'habitaciones';
-    protected $fillable = ['tipo','estado','cant_camas','precio_noche','numero','imagen'];
+    protected $fillable = ['tipo','estado','cant_camas','precio_noche','numero'];
     protected $primaryKey = 'id_habitacion';
     protected $keyType = 'string';
     public $timestamps = true;

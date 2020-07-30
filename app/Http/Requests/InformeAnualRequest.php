@@ -14,7 +14,14 @@ class InformeAnualRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'año_informe' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'año_informe.required' => 'El campo Año es obligatorio',
         ];
     }
 }

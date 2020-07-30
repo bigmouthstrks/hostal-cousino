@@ -35,19 +35,30 @@ Route::get('/rooms','FrontController@rooms')->name('front.rooms');
 Route::get('/services','FrontController@services')->name('front.services');
 
 // Usuario //
-Route::view('login', 'usuario.login')->name('login');
-Route::get('create/usuario','UsuarioController@create')->name('create.usuario');
-Route::post('usuario','UsuarioController@store')->name('usuario.store');
-Route::post('login/usuario', 'UsuarioController@login')->name('login.usuario');
-Route::get('logout/usuario','UsuarioController@logout')->name('logout.usuario');
-Route::get('usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.edit');
-Route::put('usuarios/{usuario}','UsuarioController@update')->name('usuarios.update');
+Route::view('/login', 'usuario.login')->name('login');
+Route::get('/create/usuario','UsuarioController@create')->name('create.usuario');
+Route::post('/usuario','UsuarioController@store')->name('usuario.store');
+Route::post('/login/usuario', 'UsuarioController@login')->name('login.usuario');
+Route::get('/logout/usuario','UsuarioController@logout')->name('logout.usuario');
+Route::get('/usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.edit');
+Route::get('/usuarios/{usuario}/edit/change_password','UsuarioController@change_password')->name('usuarios.change_password');
+Route::get('/usuarios/{usuario}/edit/change_email','UsuarioController@change_email')->name('usuarios.change_email');
+Route::get('/usuarios/{usuario}/edit/change_phone','UsuarioController@change_phone')->name('usuarios.change_phone');
+Route::get('/usuarios/{usuario}/edit/change_address','UsuarioController@change_address')->name('usuarios.change_address');
+Route::put('/usuarios/{usuario}/update_email','UsuarioController@update_email')->name('usuarios.update_email');
+Route::put('/usuarios/{usuario}/update_address','UsuarioController@update_address')->name('usuarios.update_address');
+Route::put('/usuarios/{usuario}/update_password','UsuarioController@update_password')->name('usuarios.update_password');
+Route::put('/usuarios/{usuario}/update_phone','UsuarioController@update_phone')->name('usuarios.update_phone');
+Route::delete('/usuarios/{usuario}','UsuarioController@destroy')->name('usuarios.destroy');
 
 // Funcionarios //
 Route::get('/create/funcionario', 'UsuarioController@create_funcionario')->name('create.funcionario');
-Route::post('funcionario','UsuarioController@store_funcionario')->name('funcionario.store');
+Route::post('/funcionario','UsuarioController@store_funcionario')->name('funcionario.store');
 
 // Informes //
 Route::get('/informes','InformeController@index')->name('informes.index');
 Route::post('/informes/create_mensual','InformeController@create_mensual')->name('informe.create_mensual');
 Route::post('/informes/create_anual','InformeController@create_anual')->name('informe.create_anual');
+
+// Artículo //
+Route::resource('/articulo', 'ArticuloController');

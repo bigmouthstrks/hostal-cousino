@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ChangeAddressRequest;
+use App\Http\Requests\ChangeEmailRequest;
+use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\ChangePhoneRequest;
 use App\Usuario;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -115,46 +119,115 @@ class UsuarioController extends Controller
         return back()->with('success','¡Registro realizado con éxito!');
     }
 
-    public function show(Usuario $usuario)
-    {
-        //
-    }
-
     public function edit(Usuario $usuario)
     {
         $usuario_actual = Auth::user();
         return view('usuario.edit', compact('usuario_actual'));
     }
 
-    public function update(UsuarioEditRequest $request, Usuario $usuario)
+    public function change_password(Usuario $usuario)
     {
-        if ($request->direccion != $usuario->direccion){
-            $usuario->direccion = $request->direccion;
-        }
+        $usuario_actual = Auth::user();
+        return view('usuario.change_password', compact('usuario_actual'));
+    }
 
-        if ($request->ciudad != $usuario->ciudad){
-            $usuario->ciudad = $request->ciudad;
-        }
-
-        if ($request->pais != $usuario->pais){
-            $usuario->pais = $request->pais;
-        }
-
-        if ($request->password != $usuario->password){
-            $usuario->password = $request->password;
-        }
-
-        if ($request->email != $usuario->email){
-            $usuario->email = $request->email;
+    public function update_password(ChangePasswordRequest $passwordRequest, Usuario $usuario)
+    {
+        if (Hash::make($passwordRequest->current_password) == $usuario->password){
+            echo('Las contraseñas coinciden');
+            if ($passwordRequest->new_password == ''){
+                $usuario->password = $usuario->password;
+            }else{
+                if ($passwordRequest->new_password != ''){
+                    $usuario->password = Hash::make($passwordRequest->new_password);
+                }
+            }
         }
 
         $usuario->save();
-        return redirect()->route('front.index');
+        return redirect()->route('usuarios.edit',Auth::user()->id_usuario)->with('success','Contraseña actualizado exitosamente');
+    }
+
+    public function change_phone(Usuario $usuario)
+    {
+        $usuario_actual = Auth::user();
+        return view('usuario.change_phone', compact('usuario_actual'));
+    }
+
+    public function update_phone(ChangePhoneRequest $phoneRequest, Usuario $usuario)
+    {
+        if ($phoneRequest->new_phone == ''){
+            $usuario->telefono = $usuario->telefono;
+        }else{
+            if ($phoneRequest->new_phone != ''){
+                $usuario->telefono = $phoneRequest->new_phone;
+            }
+        }
+
+        $usuario->save();
+        return redirect()->route('usuarios.edit',Auth::user()->id_usuario)->with('success','Teléfono actualizado exitosamente');
+    }
+
+    public function change_email(Usuario $usuario)
+    {
+        $usuario_actual = Auth::user();
+        return view('usuario.change_email', compact('usuario_actual'));
+    }
+
+    public function update_email(ChangeEmailRequest $emailRequest, Usuario $usuario)
+    {
+        if ($emailRequest->new_email == ''){
+            $usuario->email = $usuario->email;
+        }else{
+            if ($emailRequest->new_email != ''){
+                $usuario->email = $emailRequest->new_email;
+            }
+        }
+        $usuario->save();
+        return redirect()->route('usuarios.edit',Auth::user()->id_usuario)->with('success','Correo electrónico actualizado exitosamente');
+    }
+
+    public function change_address(Usuario $usuario)
+    {
+        $usuario_actual = Auth::user();
+        return view('usuario.change_address', compact('usuario_actual'));
+    }
+
+    public function update_address(ChangeAddressRequest $addressRequest, Usuario $usuario)
+    {
+        if ($addressRequest->new_address == ''){
+            $usuario->direccion = $usuario->direccion;
+        }else{
+            if ($addressRequest->new_address != ''){
+                $usuario->direccion = $addressRequest->new_address;
+            }
+        }
+
+        if ($addressRequest->new_city == ''){
+            $usuario->ciudad = $usuario->ciudad;
+        }else{
+            if ($addressRequest->new_city != ''){
+                $usuario->ciudad = $addressRequest->new_city;
+            }
+        }
+
+        if ($addressRequest->new_country == ''){
+            $usuario->pais = $usuario->pais;
+        }else{
+            if ($addressRequest->new_country != ''){
+                $usuario->pais = $addressRequest->new_country;
+            }
+        }
+
+        $usuario->save();
+        return redirect()->route('usuarios.edit',Auth::user()->id_usuario)->with('success','Dirección actualizada exitosamente');
     }
 
     public function destroy(Usuario $usuario)
     {
-        //
+        Auth::logout();
+        $usuario->delete();
+        return redirect()->route('login');
     }
 
     public function login(LoginUsuarioRequest $request){

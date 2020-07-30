@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use Exception;
 use App\Http\Requests\InformeAnualRequest;
 use App\Http\Requests\InformeMensualRequest;
-use App\Reserva;
+use App\Rules\RuleAñoInforme;
 use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Support\Facades\DB;
 
@@ -28,18 +28,31 @@ class InformeController extends Controller
         - Total de ingresos-> Suma de todos los pagos en el mes
         */
 
-
         try{
 
             $mes_ingresado = $request->mes_informe;
+            $meses = [
+                1 => 'Enero',
+                2 => 'Febrero',
+                3 => 'Marzo',
+                4 => 'Abril',
+                5 => 'Mayo',
+                6 => 'Junio',
+                7 => 'Julio',
+                8 => 'Agosto',
+                9 => 'Septiembre',
+                10 => 'Octubre',
+                11 => 'Noviembre',
+                12 => 'Diciembre'
+            ];
+
             $año_ingresado = $request->año_informe;
+
+            $this->validate($request, ['año_informe' => new RuleAñoInforme]);
 
             $reservas = DB::table('reservas')
                             ->whereYear('created_at', $año_ingresado)
                             ->whereMonth('created_at', $mes_ingresado)
-                            ->get();
-
-            $tipos = DB::table('reservas')
                             ->get();
 
             $cantidad_reservas = count($reservas);
@@ -51,8 +64,8 @@ class InformeController extends Controller
 
             $data = [
                 'title' => 'Informe mensual',
-                'mes' => 'Julio',
-                'año' => '2020',
+                'mes' => $meses[$mes_ingresado],
+                'año' => $año_ingresado,
                 'total_ingresos' => '1.643.000',
 
                 // Total de reservas en el mes (después cambiar por estadías) //
@@ -88,6 +101,10 @@ class InformeController extends Controller
     public function create_anual(InformeAnualRequest $request)
     {
         try{
+
+            $año_ingresado = $request->año_informe;
+            $this->validate($request, ['año_informe' => new RuleAñoInforme]);
+
             $current_date = [
                 'date' => date('d/m/Y', time()),
                 'time' => date('H:i:s a', time())
@@ -95,7 +112,7 @@ class InformeController extends Controller
 
             $data = [
                 'title' => 'Informe anual',
-                'año' => '2020',
+                'año' => $año_ingresado,
                 'total_ingresos' => '1.643.000',
 
                 // Habitación más demandada en el mes y su respectiva cnatidad //

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class InformeMensualRequest extends FormRequest
+class ArticuloRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,16 +14,14 @@ class InformeMensualRequest extends FormRequest
     public function rules()
     {
         return [
-            'mes_informe' => 'required',
-            'año_informe' => 'required',
+            'nombre_articulo' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'mes_informe.required' => 'El campo Mes es obligatorio',
-            'año_informe.required' => 'El campo Año es obligatorio',
+            'nombre_articulo.required',
         ];
     }
 }

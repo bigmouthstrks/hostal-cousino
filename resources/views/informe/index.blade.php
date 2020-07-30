@@ -36,7 +36,7 @@
                         @csrf
                         <div id="div_año" class="form-group">
                             <label for="año_informe">Seleccione año: </label>
-                            <input name="año_informe" id="año_informe" type="text" class="form-control @error('año_informe') is-invalid @enderror" placeholder="Ingrese año">
+                            <input name="año_informe" id="año_informe" type="number" class="form-control" placeholder="Ingrese año">
                         </div>
                         <div id="div_mes" class="form-group mt-2">
                             <label for="mes_informe">Seleccione mes: </label>
@@ -56,7 +56,7 @@
                               </select>
                         </div>
                         <div id="div_button" class="mt-2">
-                        <button type="submit" class="w-100 btn btn-info" id="btn_generar">Generar informe</button>
+                            <button type="submit" class="w-100 btn btn-info" id="btn_generar">Generar informe</button>
                         </div>
                     </form>
                 </div>

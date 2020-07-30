@@ -57,32 +57,7 @@ class HabitacionController extends Controller
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->descripcion = $request->descripcion;
-        $habitacion->imagen = $request->imagen->store('public/imagenes');
 
-        // Almacenar imágenes de la respectiva habitación //
-        /*
-        $imagen_1 = new Imagen();
-        $imagen_1->id_imagen = 'IMG01_' . $habitacion->id_habitacion;
-        $imagen_1->ruta_imagen = $request->imagen_1->store('public/imagenes');
-
-        $imagen_2 = new Imagen();
-        $imagen_2->id_imagen = 'IMG02_' . $habitacion->id_habitacion;
-        $imagen_2->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-        $imagen_3 = new Imagen();
-        $imagen_3->id_imagen = 'IMG03_' . $habitacion->id_habitacion;
-        $imagen_3->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-        $imagen_4 = new Imagen();
-        $imagen_4->id_imagen = 'IMG04_' . $habitacion->id_habitacion;
-        $imagen_4->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-
-        $imagen_1->save();
-        $imagen_2->save();
-        $imagen_3->save();
-        $imagen_4->save();
-        */
         $habitacion->save();
         return back()->with('success','Habitación creada exitosamente');
     }
@@ -110,32 +85,6 @@ class HabitacionController extends Controller
         $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->descripcion = $request->descripcion;
-        $habitacion->imagen = $request->imagen->store('public/imagenes');
-
-        // Almacenar imágenes de la respectiva habitación //
-        /*
-        $imagen_1 = new Imagen();
-        $imagen_1->id_imagen = 'IMG01_' . $habitacion->id_habitacion;
-        $imagen_1->ruta_imagen = $request->imagen_1->store('public/imagenes');
-
-        $imagen_2 = new Imagen();
-        $imagen_2->id_imagen = 'IMG02_' . $habitacion->id_habitacion;
-        $imagen_2->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-        $imagen_3 = new Imagen();
-        $imagen_3->id_imagen = 'IMG03_' . $habitacion->id_habitacion;
-        $imagen_3->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-        $imagen_4 = new Imagen();
-        $imagen_4->id_imagen = 'IMG04_' . $habitacion->id_habitacion;
-        $imagen_4->ruta_imagen = $request->imagen_2->store('public/imagenes');
-
-
-        $imagen_1->save();
-        $imagen_2->save();
-        $imagen_3->save();
-        $imagen_4->save();
-        */
         $habitacion->save();
         return redirect()->route('habitaciones.index');
     }
