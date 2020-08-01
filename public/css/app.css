@@ -26,3 +26,7 @@ body{
 .carousel-caption-bg{
 	background: rgba(0, 0, 0, 0.5);
 }
+
+.card{
+    display: inline-block;
+}

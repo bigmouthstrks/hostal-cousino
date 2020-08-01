@@ -21,6 +21,7 @@ Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('hab
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
 Route::get('/reservas/index','ReservaController@index')->name('reservas.index');
 Route::post('/reservas','ReservaController@store')->name('reservas.store');
+Route::post('/reservas/search','ReservaController@search')->name('reservas.search');
 Route::get('/reservas/{reserva}', 'ReservaController@show')->name('reservas.show');
 Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.edit');
 

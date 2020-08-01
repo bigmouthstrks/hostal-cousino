@@ -2,20 +2,36 @@
 @section('main')
 
     <h2 class="text-center mb-3">Habitaciones</h2>
-    @foreach($tipos_habitaciones as $tipo)
-        <div class="shadow rounded flex-row flex-wrap mb-4 row">
-            <div class="border-0 col-8">
-                <img src="{{ asset('images/rooms/doble_twin2.jpg') }}" class="img-fluid">
-            </div>
-            <div class="card-block px-2 p-5 col-4">
-                <h4 class="card-title">{{ $tipo->tipo }}</h4>
-                <p class="text-secondary">{{ $tipo->descripcion }}</p>
-                <p class="card-text"><i class="fas fa-bed mr-2"></i> {{ $tipo->cant_camas }} @if($tipo->cant_camas > 1) Camas @elseif($tipo->cant_camas <= 1) Cama @endif </p>
-                <p class="card-text"><i class="fas fa-toilet mr-2"></i>Baño privado</p>
-                <h5><strong>${{ $tipo->precio_noche / 1000  . '.000' }}</strong></h5>
-                <a href="#" class="btn btn-info w-100">Ver Disponibilidad</a>
-            </div>
+    <div id="carouselExampleIndicators" class="carousel slide shadow-lg mb-4" data-ride="carousel">
+        <ol class="carousel-indicators d-none d-md-flex">
+            @foreach($tipos_habitaciones as $key => $tipo)
+                <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" @if($key == 0) class="active" @endif></li>
+            @endforeach
+        </ol>
+        <div class="carousel-inner">
+            @foreach($tipos_habitaciones as $key => $tipo)
+                <div class="carousel-item @if($key == 1) active @endif">
+                    <img class="d-block w-100" src="{{ asset('images/rooms_carousel/0.jpg') }}" alt="First slide">
+                    <div class="carousel-caption carousel-caption-bg d-none d-md-block">
+                        <h4>{{ $tipo->tipo }}</h4>
+                        <p>{{ $tipo->descripcion }}</p>
+                    </div>
+                    <!-- Vista de la leyenda desde un dispositivo móvil -->
+                    <div class="d-md-none d-block">
+                        <h4>{{ $tipo->tipo }}</h4>
+                        <p>{{ $tipo->descripcion }}</p>
+                    </div>
+                </div>
+            @endforeach
         </div>
-    @endforeach
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+  </div>
 
 @endsection
