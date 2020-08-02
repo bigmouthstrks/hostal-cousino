@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservaEditRequest;
 use App\Http\Requests\ReservaRequest;
-use App\Http\Requests\ReservaSearchRequest;
 use App\Reserva;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -23,9 +22,9 @@ class ReservaController extends Controller
         return view('reserva.create',compact('tipos_habitaciones'));
     }
 
-    public function search()
+    public function search(String $tipo)
     {
-        //
+        return view('reserva.search', compact('tipo'));
     }
 
     public function store(ReservaRequest $request)
@@ -76,14 +75,14 @@ class ReservaController extends Controller
         return back()->with('success','¡Reserva registrada con éxito!');
     }
 
-    public function show($id)
+    public function show(Reserva $reserva)
     {
-        //
+        return view('reserva.show', compact('reserva'));
     }
 
-    public function edit($id)
+    public function edit(Reserva $reserva)
     {
-        //
+        return view('reserva.edit', compact('reserva'));
     }
 
     public function update(ReservaEditRequest $request, $id)
@@ -91,8 +90,9 @@ class ReservaController extends Controller
         //
     }
 
-    public function destroy($id)
+    public function destroy(Reserva $reserva)
     {
-        //
+        $reserva->delete();
+        return redirect()->route('reservas.index');
     }
 }

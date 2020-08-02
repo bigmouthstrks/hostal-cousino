@@ -20,7 +20,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-body">
-          ¿Está seguro de que desea eliminar la habitación {{ $articulo->id_articulo }}?
+          ¿Está seguro de que desea eliminar el articulo {{ $articulo->id_articulo }}?
         </div>
         <div class="modal-footer">
             <form method="POST" action="{{ route('articulo.destroy', $articulo->id_articulo) }}">

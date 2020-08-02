@@ -27,7 +27,7 @@
                 </div>
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>
-				<a href="{{ route('habitaciones.index') }}" class="btn btn-danger">Cancelar</a>
+				<a href="{{ route('articulo.index') }}" class="btn btn-danger">Cancelar</a>
 			</form>
 		</div>
 	</div>

@@ -12,7 +12,6 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
-                        <th>Rut/Pasaporte</th>
                         <th>Estado</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Término</th>
@@ -25,7 +24,6 @@
                     @foreach($reservas as $reserva)
                     <tr>
                         <td>{{ $reserva->id_reserva }}</td>
-                        <td>{{ $reserva->rut_pasaporte }}</td>
                         <td>{{ $reserva->estado }}</td>
                         <td>{{ $reserva->inicio }}</td>
                         <td>{{ $reserva->termino }} </td>

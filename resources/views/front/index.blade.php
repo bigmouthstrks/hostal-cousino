@@ -70,9 +70,9 @@
 	<hr>
     <h2 class="title text-center">Testimonios</h2>
     <hr>
-	<div class="row p-2">
+	<div class="row p-2 d-flex justify-content-center">
 		@foreach($testimonios as $testimonio)
-            <div class="shadow col- mr-4">
+            <div class="shadow col-3 mr-5 ">
                 <div class="card-body">
                     <h5 class="card-title">{{ $testimonio->usuario->nombre . ' ' . $testimonio->usuario->apellido_paterno }}</h5>
                     <div>
@@ -94,9 +94,9 @@
 		  	<img class="card-img-top" src="{{ asset('images/food_service.jpg') }}" alt="Card image cap">
 		  	<div class="card-body">
 		    	<h5 class="card-title">Una cena con clase</h5>
-		    	<p class="card-text">Lleva a quienes te acompañan a una cena elegante, tú pones la gente y nosotros el resto.</p>
+		    	<p class="card-text">Lleve a quienes le acompañan a una cena elegante, usted pone la gente y nosotros el resto.</p>
 		  	</div>
-		  	<div class="card-footer text-muted">
+		  	<div class="pl-2 pr-2 pb-2 d-flex justify-content-center">
 		  		<a href="#" class="btn btn-info w-100">Ver Más</a>
 		  	</div>
 		</div>
@@ -104,9 +104,9 @@
 		  	<img class="card-img-top" src="{{ asset('images/room_service.jpg') }}" alt="Card image cap">
 	  		<div class="card-body">
 		    	<h5 class="card-title">Habitaciones a tu medida</h5>
-		    	<p class="card-text">No pagues de más por espacio que no utilizarás. Reserva una habitación a tu medida.</p>
+		    	<p class="card-text">No pague de más por espacio que no utilizarás. Reserve una habitación a tu medida.</p>
 		  	</div>
-		  	<div class="card-footer text-muted">
+		  	<div class="pl-2 pr-2 pb-2 d-flex justify-content-center">
 		  		<a href="{{ route('front.rooms') }}" class="btn btn-info w-100">Ver habitaciones</a>
 		  	</div>
 		</div>
@@ -114,11 +114,11 @@
 		  	<img class="card-img-top" src="{{ asset('images/breakfast_service.jpg') }}" alt="Card image cap">
 		  	<div class="card-body">
 		    	<h5 class="card-title">Desayuno continental</h5>
-		    	<p class="card-text">Disfruta de un desayuno contundente, fresco y lleno de variedad directo a la comodidad de tu habitación.</p>
-		  	</div>
-		  	<div class="card-footer text-muted">
-		  		<a href="#" class="btn btn-info w-100">Ver Menu</a>
-		  	</div>
+		    	<p class="card-text">Disfrute de un desayuno contundente, fresco y lleno de variedad directo a su habitación.</p>
+                </div>
+                <div class="pl-2 pr-2 pb-2 d-flex justify-content-center">
+                    <a href="#" class="btn btn-info w-100">Ver Menu</a>
+                </div>
 		</div>
 	</div>
 

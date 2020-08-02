@@ -20,25 +20,4 @@
         </div>
     </div>
 
-{{--
-    Modal de confirmación de eliminación
---}}
-    <div class="modal fade" id="confirmacion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                ¿Está seguro de que desea cancelar la reserva {{ $reserva->id_reserva}}?
-                </div>
-                <div class="modal-footer">
-                    <form method="POST" action="{{ route('reservas.destroy', $reserva->id_reserva) }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-danger">Confirmar</button>
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
 @endsection

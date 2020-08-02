@@ -11,7 +11,7 @@
         <div class="carousel-inner">
             @foreach($tipos_habitaciones as $key => $tipo)
                 <div class="carousel-item @if($key == 1) active @endif">
-                    <img class="d-block w-100" src="{{ asset('images/rooms_carousel/0.jpg') }}" alt="First slide">
+                    <img class="d-block w-100" src="{{ asset("images/tipos/$tipo->tipo.jpg") }}" alt="First slide">
                     <div class="carousel-caption carousel-caption-bg d-none d-md-block">
                         <h4>{{ $tipo->tipo }}</h4>
                         <p>{{ $tipo->descripcion }}</p>
