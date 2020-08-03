@@ -62,3 +62,6 @@ Route::post('/informes/create_anual','InformeController@create_anual')->name('in
 
 // Artículo //
 Route::resource('/articulo', 'ArticuloController');
+
+// Estadía //
+Route::get('/estadias/index','EstadiaController@index')->name('estadias.index');
