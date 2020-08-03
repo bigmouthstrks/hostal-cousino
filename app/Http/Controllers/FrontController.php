@@ -13,12 +13,13 @@ class FrontController extends Controller
 
     public function index()
     {
+        /*
         $testimonio1 = Testimonio::find(0);
-        $testimonio1->getOriginal(); 
+        $testimonio1->getOriginal();
         $testimonios = Testimonio::all();
-        $cantidad = Testimonio::count();
-        
-        return view('front.index',compact('testimonios','cantidad','testimonio1'));
+        $cantidad = Testimonio::count();*/
+
+        return view('front.index'/*,compact('testimonios','cantidad','testimonio1')*/);
     }
 
     public function about()

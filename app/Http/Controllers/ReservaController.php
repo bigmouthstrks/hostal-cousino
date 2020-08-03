@@ -47,8 +47,6 @@ class ReservaController extends Controller
     public function store(ReservaRequest $request)
     {
 
-
-
         /* Generar id_reserva */
         $reservas = DB::select('SELECT * FROM reservas');
         $cantidad_reservas = 0;
