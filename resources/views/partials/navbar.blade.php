@@ -82,7 +82,7 @@
                 		<a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
                 		<a class="dropdown-item" href="{{ route('habitaciones.index') }}">Habitaciones</a>
                         <a class="dropdown-item" href="{{ route('informes.index') }}">Informes</a>
-                        <a class="dropdown-item" href="#">Estadías</a>
+                        <a class="dropdown-item" href="{{ route('estadias.index') }}">Estadías</a>
                         <a class="dropdown-item" href="{{ route('articulo.index') }}">Artículos</a>
                 		<a class="dropdown-item" href="{{ route('reservas.index') }}">Reservas</a>
 						<a class="dropdown-item" href="{{ route('create.funcionario') }}">Registrar Funcionario</a>
