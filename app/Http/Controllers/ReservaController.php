@@ -12,7 +12,24 @@ class ReservaController extends Controller
 {
     public function index()
     {
-        $reservas = Reserva::all();
+        /* TIPO DEL USUARIO LOGEADO ACTUALMENTE */
+        $tipo_usuario = Auth::user()->tipo;
+
+        /* ID DEL USUARIO LOGEADO ACTUALMENTE */
+        $id_usuario = Auth::user()->id_usuario;
+
+        if ($tipo_usuario == 'U'){
+            /* Si el usuario logeado es cliente se mostrarán sólo las reservas realizadas por dicho usuario */
+            $reservas = DB::table('reservas')
+                            ->where('id_usuario', $id_usuario)
+                            ->get();
+        }else{
+            if ($tipo_usuario == 'F'){
+                /* Si el usuario logeado es un funcionario se mostrará la totalidad de las reservas en el sistema */
+                $reservas = Reserva::all();
+            }
+        }
+
         return view('reserva.index',compact('reservas'));
     }
 
@@ -30,7 +47,7 @@ class ReservaController extends Controller
     public function store(ReservaRequest $request)
     {
 
-        /* Obtener RUT/PASAPORTE de pasajero */
+
 
         /* Generar id_reserva */
         $reservas = DB::select('SELECT * FROM reservas');
@@ -57,10 +74,8 @@ class ReservaController extends Controller
 
         $id_reserva = $id_reserva . $parte_numerica . $valor_numerico;
 
-
         $reserva = new Reserva();
         $reserva->id_reserva = $id_reserva;
-        $reserva->estado = 'Activa';
         $reserva->inicio = $request->fecha_llegada;
         $reserva->termino = $request->fecha_salida;
 
@@ -85,9 +100,10 @@ class ReservaController extends Controller
         return view('reserva.edit', compact('reserva'));
     }
 
-    public function update(ReservaEditRequest $request, $id)
+    public function update(ReservaEditRequest $request, Reserva $reserva)
     {
-        //
+        $reserva->save();
+        return back()->with('success','¡Reserva registrada con éxito!');
     }
 
     public function destroy(Reserva $reserva)

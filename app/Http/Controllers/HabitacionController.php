@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Habitacion;
-use App\Imagen;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\HabitacionRequest;
 use App\Http\Requests\HabitacionEditRequest;
@@ -12,7 +11,6 @@ class HabitacionController extends Controller
 {
     public function __construct(){
         $this->middleware('funcionario');
-        //->except(['index'])
     }
 
     public function index()

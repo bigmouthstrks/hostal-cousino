@@ -16,9 +16,10 @@
             @endif
 
             @include('partials.flash-message')
-            <form class="p-4">
+            <form class="p-4" method="POST" action="{{ route('reservas.store') }}">
+                @csrf
                 <div class="d-flex p-2">
-                    <h5 class="">Tipo de habitación seleccionado: {{ $tipo }}</h5>
+                    <h5 id="tipo_habitacion" name="tipo_habitacion" value="{{ $tipo }}">Tipo de habitación seleccionado: {{ $tipo }}</h5>
                     <a href="{{ route('reservas.create') }}" class="ml-5">Cambiar</a>
                 </div>
                 <div class="form-group">
@@ -29,7 +30,7 @@
                     <label for="fecha_salida">Fecha salida</label>
                     <input type="date" class="form-control" id="fecha_salida" name="fecha_salida" placeholder="Fecha de salida">
                 </div>
-                <button class="btn btn-info">Reservar</button>
+                <button type="submit" class="btn btn-info">Reservar</button>
                 <a href="{{ route('reservas.create') }}" class="btn btn-warning">Cancelar</a>
             </form>
         </div>

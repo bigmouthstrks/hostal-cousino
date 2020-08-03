@@ -25,6 +25,7 @@ Route::get('/reservas/{reserva}', 'ReservaController@show')->name('reservas.show
 Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.edit');
 Route::get('/reservas/search/{tipo}','ReservaController@search')->name('reservas.search');
 Route::delete('/reservas/{reserva}','ReservaController@destroy')->name('reservas.destroy');
+Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.update');
 
 
 // Mensajes //

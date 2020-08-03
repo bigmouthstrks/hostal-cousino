@@ -35,7 +35,7 @@
 	            <a class="dropdown-item" href="{{ route('usuarios.edit', Auth::user()->id_usuario) }}">Perfil</a>
                 <a class="dropdown-item" href="{{ route('testimonios.index') }}">Testimonios</a>
                 <a class="dropdown-item" href="#">Estadías</a>
-                <a class="dropdown-item" href="#">Reservas</a>
+                <a class="dropdown-item" href="{{ route('reservas.index') }}">Reservas</a>
 	        </div>
 	    	</li>
 	      	<li class="nav-item">
