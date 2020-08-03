@@ -11,7 +11,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginUsuarioRequest;
 use App\Http\Requests\RegisterUsuarioRequest;
-use App\Http\Requests\UsuarioEditRequest;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller

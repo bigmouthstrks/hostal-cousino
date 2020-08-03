@@ -3,14 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 // Testimonios //
-Route::get('/testimonios/index','TestimonioController@index')->name('testimonios.index');
+Route::get('/testimonios','TestimonioController@index')->name('testimonios.index');
 Route::get('/testimonios/create','TestimonioController@create')->name('testimonios.create');
 Route::post('/testimonios','TestimonioController@store')->name('testimonios.store');
 Route::get('/testimonios/{testimonio}','TestimonioController@show')->name('testimonios.show');
 
 // Habitaciones //
 Route::get('/habitaciones/create','HabitacionController@create')->name('habitaciones.create');
-Route::get('/habitaciones/index','HabitacionController@index')->name('habitaciones.index');
+Route::get('/habitaciones','HabitacionController@index')->name('habitaciones.index');
 Route::post('/habitaciones','HabitacionController@store')->name('habitaciones.store');
 Route::get('/habitaciones/{habitacion}','HabitacionController@show')->name('habitaciones.show');
 Route::get('/habitaciones/{habitacion}/edit','HabitacionController@edit')->name('habitaciones.edit');
@@ -19,10 +19,14 @@ Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('hab
 
 // Reservas //
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
-Route::get('/reservas/index','ReservaController@index')->name('reservas.index');
+Route::get('/reservas','ReservaController@index')->name('reservas.index');
 Route::post('/reservas','ReservaController@store')->name('reservas.store');
 Route::get('/reservas/{reserva}', 'ReservaController@show')->name('reservas.show');
 Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.edit');
+Route::get('/reservas/search/{tipo}','ReservaController@search')->name('reservas.search');
+Route::delete('/reservas/{reserva}','ReservaController@destroy')->name('reservas.destroy');
+Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.update');
+
 
 // Mensajes //
 Route::get('/mensajes/create','MensajeController@create')->name('mensajes.create');

@@ -31,10 +31,10 @@
                             <td>{{ $habitacion->numero }}</td>
                             <td>
                                 <div class="container">
-                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('habitaciones.show',$habitacion->id_habitacion) }}" class="btn btn-warning">
+                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('habitaciones.show', $habitacion->id_habitacion) }}" class="btn btn-warning">
                                         <i class="fas fa-info-circle text-white"></i>
                                     </a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="{{ route('habitaciones.edit',$habitacion->id_habitacion) }}" class="btn btn-info">
+                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="{{ route('habitaciones.edit', $habitacion->id_habitacion) }}" class="btn btn-info">
                                         <i class="fas fa-edit"></i>
                                     </a>
                                 </div>

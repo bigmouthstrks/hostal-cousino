@@ -3,7 +3,6 @@ body{
 	font-size: 18;
 }
 
-
 #view-content{
 	height: 100%;
 }
@@ -16,11 +15,6 @@ body{
 .nav{
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: large;
-}
-
-
-.card-title{
-	font-weight: 400;
 }
 
 .carousel-caption-bg{
