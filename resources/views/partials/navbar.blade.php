@@ -35,13 +35,13 @@
                 <a class="dropdown-item" href="{{ route('reservas.index') }}">Reservas</a>
 	        </div>
 	    	</li>
-	      	<li class="nav-item">
-	        	<a class="nav-link text-light btn btn-danger mb-1 ml-1 mr-1 mt-1 p-1" href="{{ route('logout.usuario') }}"><i class="fas fa-sign-out-alt mr-1"></i>Cerrar sesión</a>
-	      	</li>
 		</ul>
 		</div>
 	</div>
 	<span class="text-white">Bienvenido(a), {{Auth::user()->nombre}}!</span>
+	<li class="nav-item">
+		<a class="nav-link text-light btn btn-danger mb-1 ml-3 mr-1 mt-1 p-1" href="{{ route('logout.usuario') }}"><i class="fas fa-sign-out-alt mr-1"></i></a>
+	</li>
 </nav>
 @else
 <nav class="nav navbar navbar-expand-lg navbar-light shadow bg-dark">
@@ -88,13 +88,13 @@
 
 	        		</div>
 	    		</li>
-	      		<li class="nav-item">
-	        		<a class="nav-link text-light btn btn-danger mb-1 ml-1 mr-1 mt-1 p-1" href="{{ route('logout.usuario') }}"><i class="fas fa-sign-out-alt mr-1"></i>Cerrar sesión</a>
-	      		</li>
 			</ul>
 	  	</div>
 	</div>
 	<span class="text-white">{{Auth::user()->nombre}} {{Auth::user()->apellido_paterno}} | {{Auth::user()->id_usuario}}</span>
+	<li class="nav-item">
+		<a class="nav-link text-light btn btn-danger mb-1 ml-3 mr-1 mt-1 p-1" href="{{ route('logout.usuario') }}"><i class="fas fa-sign-out-alt mr-1"></i></a>
+	</li>
 </nav>
 @endif
 

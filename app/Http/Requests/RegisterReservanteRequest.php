@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RegisterUsuarioRequest extends FormRequest
+class RegisterReservanteRequest extends FormRequest
 {
     public function authorize()
     {
@@ -18,8 +18,6 @@ class RegisterUsuarioRequest extends FormRequest
             'nombre'                => 'required',
             'apellido_paterno'      => 'required',
             'email'                 => 'required|unique:usuarios,email',
-            'password'              => ['required','confirmed','min:5'],
-            'password_confirmation' => 'required',
         ];
     }
 
@@ -29,10 +27,6 @@ class RegisterUsuarioRequest extends FormRequest
             'apellido_paterno.required'       => 'Debe ingresar su apellido paterno.',
             'email.required'                  => 'Debe ingresar un email.',
             'email.unique'                    => 'Este email ya se encuentra registrado.',
-            'password.required'               => 'Debe ingresar la contraseña.',
-            'password.min'                    => 'La contraseña debe tener :min carácteres como mínimo.',
-            'password.confirmed'              => 'Las contraseñas deben coincidir.',
-            'password_confirmation.required'  => 'Debe confirmar la contraseña.',
         ];
     }
 }

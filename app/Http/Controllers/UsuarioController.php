@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\LoginUsuarioRequest;
 use App\Http\Requests\RegisterUsuarioRequest;
+use App\Http\Requests\RegisterReservanteRequest;
 use Illuminate\Support\Facades\DB;
 
 class UsuarioController extends Controller
@@ -104,6 +105,24 @@ class UsuarioController extends Controller
         $usuario->save();
 
         return redirect()->route('login')->with('success','¡Registro realizado con éxito!');
+    }
+
+    public function storeReservante(RegisterReservanteRequest $request)
+    {
+        $usuario = new Usuario();
+        $usuario->id_usuario = $request->id_usuario;
+        $usuario->nombre = $request->nombre;
+        $usuario->apellido_paterno = $request->apellido_paterno;
+        $usuario->apellido_materno = $request->apellido_materno;
+        $usuario->email = $request->email;
+        $usuario->password = Hash::make($request->email);
+        $usuario->tipo = 'U';
+        $usuario->save();
+
+        $id_reservante = $request->id_usuario;
+
+        return redirect()->route('reservas.createReservante',compact('id_reservante'));
+        // return redirect()->route('reservas.createReservante')->with( ['id_reservante' => $id_reservante] );
     }
 
     public function store_funcionario(RegisterUsuarioRequest $request)
