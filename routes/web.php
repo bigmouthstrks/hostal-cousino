@@ -20,8 +20,10 @@ Route::put('habitaciones/{habitacion}','HabitacionController@update')->name('hab
 
 // Reservas //
 Route::get('/reservas/create','ReservaController@create')->name('reservas.create');
+Route::get('/reservas/create/reservante','ReservaController@createReservante')->name('reservas.createReservante');
 Route::get('/reservas','ReservaController@index')->name('reservas.index');
 Route::post('/reservas','ReservaController@store')->name('reservas.store');
+Route::post('/reservas/store','ReservaController@storeFuncReservante')->name('reservas.storeFuncReservante');
 Route::get('/reservas/{reserva}', 'ReservaController@show')->name('reservas.show');
 Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.edit');
 Route::get('/reservas/search/{tipo}','ReservaController@search')->name('reservas.search');
@@ -29,6 +31,7 @@ Route::delete('/reservas/{reserva}','ReservaController@destroy')->name('reservas
 Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.update');
 Route::post('/reservas/consultar','ReservaController@consultar')->name('reservas.consultar');
 Route::view('/reservas/registrar', 'reserva.registrar')->name('reservas.registrar');
+Route::view('/reservas/registrar/reservante', 'reserva.funcionario_reservante')->name('reservas.funcionario');
 
 // Mensajes //
 Route::get('/mensajes/create','MensajeController@create')->name('mensajes.create');
@@ -43,6 +46,7 @@ Route::get('/services','FrontController@services')->name('front.services');
 Route::view('/login', 'usuario.login')->name('login');
 Route::get('/create/usuario','UsuarioController@create')->name('create.usuario');
 Route::post('/usuario','UsuarioController@store')->name('usuario.store');
+Route::post('/usuario/reservante','UsuarioController@storeReservante')->name('usuario.storeReservante');
 Route::post('/login/usuario', 'UsuarioController@login')->name('login.usuario');
 Route::get('/logout/usuario','UsuarioController@logout')->name('logout.usuario');
 Route::get('/usuarios/{usuario}/edit','UsuarioController@edit')->name('usuarios.edit');

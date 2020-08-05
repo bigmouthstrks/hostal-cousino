@@ -3,7 +3,9 @@
 
 <div class="d-flex justify-content-between p-2">
     <h3>Reservas</h3>
-    <a class="btn btn-danger" href="{{ route('reservas.create') }}"><i class="fas fa-plus mr-2"></i>Nueva reserva</a>
+    @if (Auth::user()->tipo=='F')
+    <a class="btn btn-danger" href="{{ route('reservas.funcionario') }}"><i class="fas fa-plus mr-2"></i>Nueva reserva</a>
+    @endif
 </div>
 <div class="row">
     <div class="col">
