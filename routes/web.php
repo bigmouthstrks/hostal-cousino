@@ -30,7 +30,6 @@ Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.upda
 Route::post('/reservas/consultar','ReservaController@consultar')->name('reservas.consultar');
 Route::view('/reservas/registrar', 'reserva.registrar')->name('reservas.registrar');
 
-
 // Mensajes //
 Route::get('/mensajes/create','MensajeController@create')->name('mensajes.create');
 Route::post('/mensajes','MensajeController@send')->name('mensajes.send');
@@ -75,7 +74,11 @@ Route::get('/checkin/create/{reserva}','CheckinController@create')->name('checki
 Route::post('/checkin/store','CheckinController@store')->name('checkin.store');
 
 // Estadía //
+Route::resource('estadia', 'EstadiaController');
 Route::get('/estadias/index','EstadiaController@index')->name('estadias.index');
 
 // Imagenes //
 Route::resource('/imagen','ImagenController');
+
+// Check-out //
+Route::resource('/checkout','CheckoutController');

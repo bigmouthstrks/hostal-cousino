@@ -14,7 +14,8 @@
                 <p class="card-text"><i class="fas fa-bed mr-2"></i> {{ $tipo->cant_camas }} @if($tipo->cant_camas > 1) Camas @elseif($tipo->cant_camas <= 1) Cama @endif </p>
                 <p class="card-text"><i class="fas fa-toilet mr-2"></i>Baño privado</p>
                 <h5><strong>${{ $tipo->precio_noche / 1000  . '.000' }}</strong></h5>
-                {{--@php
+                {{--
+                @php
                     $tipo = $tipo->tipo;
                     $tipo_list = explode(" ", $tipo);
                     $tipo_final = '';

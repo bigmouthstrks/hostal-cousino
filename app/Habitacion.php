@@ -22,4 +22,8 @@ class Habitacion extends Model
     public function imagen(){
         return $this->hasMany('App\Imagen');
     }
+
+    public function articulos(){
+        return $this->belongToMany('App\Articulo');
+    }
 }

@@ -57,7 +57,6 @@ class UsuarioController extends Controller
         $id_usuario = $id_usuario . $parte_numerica . $valor_numerico;
 
 
-
         return view('usuario.create',compact('id_usuario'));
     }
 

@@ -28,7 +28,7 @@ class ReservaController extends Controller
         }else{
             if ($tipo_usuario == 'F'){
                 /* Si el usuario logeado es un funcionario se mostrará la totalidad de las reservas en el sistema */
-                $reservas = Reserva::all();
+                $reservas = Reserva::orderBy('created_at')->get();
             }
         }
 
@@ -152,7 +152,7 @@ class ReservaController extends Controller
         $reserva->usuario_id = $usuario->id_usuario;
 
         $reserva->save();
-        return redirect()->route('front.index');
+        return redirect()->route('reservas.index');
     }
 
     public function show(Reserva $reserva)

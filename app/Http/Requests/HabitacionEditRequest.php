@@ -18,7 +18,6 @@ class HabitacionEditRequest extends FormRequest
             'cant_camas'      => ['required','min:1','max:5'],
             'tipo'            => 'required',
             'precio_noche'    => 'required',
-            'tamaño'          => 'required',
 
         ];
     }

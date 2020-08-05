@@ -12,7 +12,7 @@
                     <p class="card-title text-secondary">Ingrese sus datos</>
                     <form method="POST" action="{{ route('usuario.store') }}">
                         @csrf
-                        <div class="form-group">
+                        <div class="form-group" hidden>
                             <label for="id_habitacion">ID usuario:</label>
                             <input type="text" class="form-control" name="id_usuario" value="{{ $id_usuario }}" placeholder="{{ $id_usuario }}" readonly>
                         </div>

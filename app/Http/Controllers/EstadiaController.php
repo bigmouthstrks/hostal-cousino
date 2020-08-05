@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Estadia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EstadiaController extends Controller
 {
@@ -14,71 +15,62 @@ class EstadiaController extends Controller
 
     public function index()
     {
-        return view('estadia.index');
-        // return redirect()->route('estadias.index');
+        $estadias = Estadia::all();
+        return view('estadia.index', compact('estadias'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        // Asignar ID Estadía //
+        $estadias = DB::select('select * from estadias');
+        $cantidad_estadias = 0;
+
+        foreach ($estadias as $estadia) {
+            $cantidad_estadias = $cantidad_estadias + 1;
+        }
+
+        // Se genera el código de Estadía //
+        $valor_numerico = $cantidad_estadias + 1;
+        $id_estadia = 'EST';
+        $parte_numerica = '';
+
+        if ($valor_numerico < 10){
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100){
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99) {
+            $parte_numerica = '';
+        }
+
+        $id_estadia = $id_estadia . $parte_numerica . $valor_numerico;
+
+
+        return view('estadia.create', compact('id_estadia'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Estadia  $estadia
-     * @return \Illuminate\Http\Response
-     */
     public function show(Estadia $estadia)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Estadia  $estadia
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Estadia $estadia)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Estadia  $estadia
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Estadia $estadia)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Estadia  $estadia
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Estadia $estadia)
     {
         //

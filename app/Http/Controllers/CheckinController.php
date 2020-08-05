@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Checkin;
 use App\Estadia;
-use App\Http\Requests\ReservaRequest;
 use App\Reserva;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class CheckinController extends Controller
 {
-
     public function index()
     {
         $lista_checkin = Checkin::all();
@@ -20,12 +18,9 @@ class CheckinController extends Controller
 
     public function create(Reserva $reserva)
     {
-        $checkin = Checkin::all();
-        $cantidad_checkin = 0;
+        $checkins = DB::select('SELECT * FROM checkin');
 
-        foreach ($checkin as $checkin) {
-            $cantidad_checkin = $cantidad_checkin + 1;
-        }
+        $cantidad_checkin = count($checkins);
 
         // Se genera el código de check in //
         $valor_numerico = $cantidad_checkin + 1;
@@ -65,14 +60,10 @@ class CheckinController extends Controller
         $reserva = Reserva::where('id_reserva', $id_reserva);
         $reserva->delete();
 
-        /*
+
         // Asignar ID Estadía //
         $estadias = DB::select('select * from estadias');
-        $cantidad_estadias = 0;
-
-        foreach ($estadias as $estadia) {
-            $cantidad_estadias = $cantidad_estadias + 1;
-        }
+        $cantidad_estadias = count($estadias);
 
         // Se genera el código de Estadía //
         $valor_numerico = $cantidad_estadias + 1;
@@ -92,21 +83,30 @@ class CheckinController extends Controller
         $id_estadia = $id_estadia . $parte_numerica . $valor_numerico;
 
         $estadia = new Estadia();
-        $estadia->id_estadia = $request->id_estadia;
+        $estadia->id_estadia = $id_estadia;
         $estadia->fecha_inicio = $request->fecha_llegada;
 
-        $estadia->termino;
-        $estadia->pasajero_id;
-        $estadia->check_out_id;
-        $estadia->habitacion;
-
+        $estadia->fecha_termino = $request->fecha_llegada;
+        $estadia->pasajero_id = 'PAX_ID';
         $estadia->check_in_id = $request->id_check_in;
-        $estadia->id_habitacion = $request->id_habitacion;
+        $estadia->check_out_id = '';
+
+        $id_habitacion_estadia = DB::table('reservas')->select('habitacion_id')->where('id_reserva', $id_reserva)->get();
+
+        $id_habitacion = '';
+        foreach($id_habitacion_estadia as $e){
+            $id_habitacion = $e->habitacion_id;
+        }
+
+        $estadia->habitacion_id = $id_habitacion; // aqui lo asigno a la estadia actual //
+        $estadia->reserva_id = $id_reserva;
         $estadia->save();
 
+        /* ESTO MUESTRA ERROR */
+        $reserva = Reserva::where('id_reserva', $id_reserva)->get();
+        $reserva->delete();
+        /* */
 
-
-        */
         return redirect()->route('front.index');
     }
 

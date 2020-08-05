@@ -72,20 +72,6 @@
 						</select>
 					  </div>
 				</div>
-				<div class="form-group">
-					<label for="tamaño">Tamaño:</label>
-					<div class="input-group mb-3">
-					    <select class="custom-select" id="tamaño" name="tamaño">
-                            @foreach($tipos_hab as $tipo)
-                                @if($tipo == $habitacion->tipo)
-                                    <option selected value="{{ $habitacion->tipo }}">{{ $habitacion->tipo }}</option>
-                                @else
-                                    <option value="{{ $tipo }}">{{ $tipo }}</option>
-                                @endif
-                            @endforeach
-						</select>
-					  </div>
-                </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
                     <textarea class="form-control" placeholder="Escriba aquí una descripción para la habitación" id="descripcion" name="descripcion" rows="3" value="{{old('descripcion')}}"></textarea>

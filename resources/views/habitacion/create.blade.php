@@ -65,16 +65,6 @@
 						</select>
 					  </div>
 				</div>
-				<div class="form-group">
-					<label for="tamaño">Tamaño:</label>
-					<div class="input-group mb-3">
-						<select class="custom-select" id="tamaño" name="tamaño" required>
-						  <option value="Pequeña">Pequeña</option>
-						  <option value="Mediana">Mediana</option>
-						  <option value="Grande">Grande</option>
-						</select>
-					  </div>
-                </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
                     <textarea class="form-control" placeholder="Escriba aquí una descripción para la habitación" id="descripcion" name="descripcion" rows="3" value="{{old('descripcion')}}"></textarea>

@@ -41,7 +41,6 @@
             <p class="text-secondary">{{ $habitacion->descripcion }}</p>
             <p>Cantidad de camas: <strong>{{ $habitacion->cant_camas}}</strong></p>
             <p>Tipo de habitación: <strong>{{ $habitacion->tipo }}</strong></p>
-            <p>Tamaño: <strong>{{$habitacion->tamaño}}</strong></p>
             <p>Estado: <strong>{{ Str::ucfirst($habitacion->estado) }}</strong></p>
             <p>Número: <strong>{{$habitacion->numero}}</strong></p>
             <h5>Precio por noche: <b>$ {{ $habitacion->precio_noche / 1000  . '.000' }}</b></h5>

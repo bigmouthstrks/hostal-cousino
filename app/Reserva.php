@@ -12,7 +12,7 @@ class Reserva extends Model
     protected $primaryKey = 'id_reserva';
     protected $keyType = 'string';
     protected $fillable = ['inicio','termino','id_usuario'];
-    protected $guarded = ['id_reserva','usuarios_id'];
+    protected $guarded = ['id_reserva','usuario_id'];
     public $timestamps = true;
 
     public function usuario(){

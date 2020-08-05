@@ -44,7 +44,7 @@
                     <div class="col-10">
                         <label for="email">Dirección</label>
                         <h5>
-                            @if($usuario_actual->ciudad == '' or $usuario_actual->pais == '' or $usuario_actual->direccion == '')
+                            @if($usuario_actual->ciudad == '' or $usuario_actual->pais == '' or $usuario_actual->direccion == '' or $usuario_actual->ciudad == null or $usuario_actual->pais == null or $usuario_actual->direccion == null)
                                 No registrada
                             @else
                                 {{ $usuario_actual->direccion . ', ciudad de ' . $usuario_actual->ciudad . ', ' . $usuario_actual->pais }}
@@ -59,7 +59,7 @@
                     <div class="col-10">
                         <label for="email">Teléfono móvil</label>
                         <h5>
-                            @if($usuario_actual->telefono == '0')
+                            @if($usuario_actual->telefono == '0' or $usuario_actual->telefono == null)
                                 No registrado
                             @else
                                 {{ $usuario_actual->telefono }}

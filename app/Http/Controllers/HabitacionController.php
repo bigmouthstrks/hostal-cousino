@@ -57,7 +57,6 @@ class HabitacionController extends Controller
         $habitacion->cant_camas = $request->cant_camas;
         $habitacion->tipo = ucwords($request->tipo);
         $habitacion->precio_noche = $request->precio_noche;
-        $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->descripcion = $request->descripcion;
 
@@ -78,9 +77,8 @@ class HabitacionController extends Controller
     {
         $estados = array('Disponible','Ocupada','Bloqueada');
         $tipos_hab = array('Single','Doble Twin','Doble Matrimonial','Triple','Familiar');
-        $tamaños = array('Pequeña','Mediana','Grande');
 
-        return view('habitacion.edit', compact('habitacion','estados','tipos_hab','tamaños'));
+        return view('habitacion.edit', compact('habitacion','estados','tipos_hab'));
     }
 
     public function update(HabitacionEditRequest $request, Habitacion $habitacion)
@@ -89,7 +87,6 @@ class HabitacionController extends Controller
         $habitacion->cant_camas = $request->cant_camas;
         $habitacion->tipo = $request->tipo;
         $habitacion->precio_noche = $request->precio_noche;
-        $habitacion->tamaño = $request->tamaño;
         $habitacion->numero = $request->numero;
         $habitacion->descripcion = $request->descripcion;
 

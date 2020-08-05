@@ -12,20 +12,27 @@
                     <thead class="thead-dark">
                         <tr>
                             <th>ID Estadía</th>
-                            <th>Rut Pasajero</th>
-                            <th>Inicio</th>
-                            <th>Termino</th>
-                            <th>Habitacion</th>
+                            <th>Fecha Inicio</th>
+                            <th>Fecha Termino</th>
+                            <th>Id Check-in</th>
+                            <th>Id Check-out</th>
+                            <th>Id Pasajero</th>
+                            <th>Id Reserva</th>
+                            <th>Id Habitacion</th>
                             <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach($estadias as $estadia)
                         <tr>
-                            <td>EST001HAB001PAS001</td>
-                            <td>19760917-6</td>
-                            <td>18/07/1998</td>
-                            <td>20/12/2020</td>
-                            <td>Single - 15</td>
+                            <td>{{ $estadia->id_estadia }}</td>
+                            <td>{{ $estadia->fecha_inicio }}</td>
+                            <td>{{ $estadia->fecha_termino }}</td>
+                            <td>{{ $estadia->check_in_id }}</td>
+                            <td>{{ $estadia->check_out_id }}</td>
+                            <td>{{ $estadia->pasajero_id }}</td>
+                            <td>{{ $estadia->reserva_id }}</td>
+                            <td>{{ $estadia->habitacion_id }}</td>
                             <td>
                                 <div class="container">
                                     <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="#" class="btn btn-warning">
@@ -37,6 +44,7 @@
                                 </div>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

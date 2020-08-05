@@ -14,8 +14,8 @@ class ImagenRequest extends FormRequest
     public function rules()
     {
         return [
-            'ruta_imagen' => ['required','unique'],
-            'id_imagen' => ['required','unique'],
+            'ruta_imagen' => 'required',
+            'id_imagen' => ['required','unique:imagenes,id_imagen'],
             'habitacion_id' => 'required'
         ];
     }
@@ -24,7 +24,6 @@ class ImagenRequest extends FormRequest
     {
         return [
             'ruta_imagen.required' => 'El campo Imágen es obligatorio.',
-            'ruta_imagen.unique' => 'La imágen seleccionada ya existe.',
             'id_imagen.required' => 'El campo Id Imagen es requerido',
             'id_imagen.unique' => 'El Id Imagen ingresado ya existe.',
             'habitacion_id.required' => 'El campo Id Habitación es obligatorio.'
