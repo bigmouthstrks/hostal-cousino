@@ -75,10 +75,16 @@ Route::post('/checkin/store','CheckinController@store')->name('checkin.store');
 
 // Estadía //
 Route::resource('estadia', 'EstadiaController');
+Route::get('/estadias/{estadia}','EstadiaController@show')->name('estadias.show');
 Route::get('/estadias/index','EstadiaController@index')->name('estadias.index');
+Route::get('/estadias/add_service/{estadia}','EstadiaController@add_service')->name('estadia.add_service');
+Route::post('/estadias/store_service','EstadiaController@store_service')->name('estadia.store_service');
 
 // Imagenes //
 Route::resource('/imagen','ImagenController');
 
 // Check-out //
 Route::resource('/checkout','CheckoutController');
+
+// Servicios //
+Route::resource('/servicio','ServicioController');

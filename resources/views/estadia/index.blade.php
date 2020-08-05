@@ -35,11 +35,14 @@
                             <td>{{ $estadia->habitacion_id }}</td>
                             <td>
                                 <div class="container">
-                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="#" class="btn btn-warning">
+                                    <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('estadias.show', $estadia->id_estadia) }}" class="btn btn-warning">
                                         <i class="fas fa-info-circle text-white"></i>
                                     </a>
-                                    <a data-toggle="tooltip" data-placement="top" title="Modificar" href="#" class="btn btn-info">
-                                        <i class="fas fa-edit"></i>
+                                    <a data-toggle="tooltip" data-placement="top" title="Agregar Servicios" href="{{ route('estadia.add_service', $estadia->id_estadia) }}" class="btn btn-info">
+                                        <i class="fas fa-plus"></i>
+                                    </a>
+                                    <a data-toggle="tooltip" data-placement="top" title="Check out" href="{{ route('checkout.create') }}" class="btn btn-success">
+                                        <i class="fas fa-check-double"></i>
                                     </a>
                                 </div>
                             </td>

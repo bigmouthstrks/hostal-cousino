@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Estadia;
+use App\ServicioEstadia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -50,29 +51,27 @@ class EstadiaController extends Controller
         return view('estadia.create', compact('id_estadia'));
     }
 
-    public function store(Request $request)
-    {
-        //
-    }
-
     public function show(Estadia $estadia)
     {
-        //
+        $servicios_estadia = DB::table('servicio_estadia')->select('servicio_id')->where('estadia_id', $estadia->id_estadia)->get();
+
+        return view('estadia.show', compact('estadia'));
     }
 
-
-    public function edit(Estadia $estadia)
+    public function add_service(Estadia $estadia)
     {
-        //
+        $servicios = DB::table('servicios')->select('nombre_servicio','id_servicio')->get();
+        return view('estadia.add_service', compact('estadia','servicios'));
     }
 
-    public function update(Request $request, Estadia $estadia)
+    public function store_service(Request $request)
     {
-        //
-    }
+        $servicio_estadia = new ServicioEstadia();
+        $servicio_estadia->servicio_id = $request->servicio_id;
+        $servicio_estadia->estadia_id = $request->estadia_id;
+        $servicio_estadia->cantidad = $request->cantidad;
 
-    public function destroy(Estadia $estadia)
-    {
-        //
+        $servicio_estadia->save();
+        return back()->with('success','Servicio registrado correctamente en la estadía');
     }
 }

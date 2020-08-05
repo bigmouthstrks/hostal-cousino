@@ -83,7 +83,9 @@
                 		<a class="dropdown-item" href="{{ route('reservas.index') }}">Reservas</a>
                 		<a class="dropdown-item" href="{{ route('imagen.index') }}">Imagenes</a>
                         <a class="dropdown-item" href="{{ route('create.funcionario') }}">Registrar Funcionario</a>
-						<a class="dropdown-item" href="{{ route('checkin.index') }}">Check-in</a>
+                        <a class="dropdown-item" href="{{ route('checkin.index') }}">Check-in</a>
+                        <a class="dropdown-item" href="{{ route('servicio.index') }}">Servicios</a>
+
 	        		</div>
 	    		</li>
 	      		<li class="nav-item">

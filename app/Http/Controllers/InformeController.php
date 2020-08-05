@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Habitacion;
 use Exception;
 use App\Http\Requests\InformeAnualRequest;
 use App\Http\Requests\InformeMensualRequest;
@@ -62,11 +64,21 @@ class InformeController extends Controller
                 'time' => date('H:i:s a', time())
             ];
 
+            $reservas_por_numero = DB::table('reservas')->select('habitacion_id')->get();
+
+
+            $array = [];
+            foreach($reservas_por_numero as $r){
+                array_push($array, $r->habitacion_id);
+            }
+            dd($array);
+
+
             $data = [
                 'title' => 'Informe mensual',
                 'mes' => $meses[$mes_ingresado],
                 'año' => $año_ingresado,
-                'total_ingresos' => '1.643.000',
+                'total_ingresos' => '$1.643.000',
 
                 // Total de reservas en el mes (después cambiar por estadías) //
                 'total_reservas' => $cantidad_reservas,

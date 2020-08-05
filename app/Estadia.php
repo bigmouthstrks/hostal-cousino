@@ -11,5 +11,4 @@ class Estadia extends Model
     public $timestamps = false;
     protected $keyType = 'string';
     protected $guarded = 'id_estadia';
-
 }

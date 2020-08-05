@@ -2,84 +2,81 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServicioRequest;
 use App\Servicio;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ServicioController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $servicios = Servicio::all();
+        return view('servicio.index', compact('servicios'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $servicios = DB::select('select * from servicios');
+        $cantidad_servicios = 0;
+
+        foreach ($servicios as $servicio) {
+            $cantidad_servicios = $cantidad_servicios + 1;
+        }
+
+        // Se genera el código de servicio //
+        $valor_numerico = $cantidad_servicios + 1;
+        $id_servicio = 'SER';
+        $parte_numerica = '';
+
+        if ($valor_numerico < 10){
+            $parte_numerica = '00';
+        }
+        if ($valor_numerico > 9 && $valor_numerico < 100){
+            $parte_numerica = '0';
+        }
+        if ($valor_numerico > 99) {
+            $parte_numerica = '';
+        }
+
+        $id_servicio = $id_servicio . $parte_numerica . $valor_numerico;
+
+        return view('servicio.create', compact('id_servicio'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(ServicioRequest $request)
     {
-        //
+        $servicio = new Servicio();
+        $servicio->id_servicio = $request->id_servicio;
+        $servicio->nombre_servicio = $request->nombre_servicio;
+        $servicio->precio_servicio = $request->precio_servicio;
+
+        $servicio->save();
+        return back()->with('success','Servicio registrado correctamente');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Servicio  $servicio
-     * @return \Illuminate\Http\Response
-     */
     public function show(Servicio $servicio)
     {
-        //
+        return view('servicio.show', compact('servicio'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Servicio  $servicio
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Servicio $servicio)
     {
-        //
+        return view('servicio.edit', compact('servicio'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Servicio  $servicio
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Servicio $servicio)
+    public function update(ServicioRequest $request, Servicio $servicio)
     {
-        //
+        $servicio->nombre_servicio = $request->nombre_servicio;
+        $servicio->precio_servicio = $request->precio_servicio;
+
+        $servicio->save();
+        return back()->with('success','Servicio modificado correctamente');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Servicio  $servicio
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Servicio $servicio)
     {
-        //
+        $servicio->delete();
+        return redirect()->route('servicio.index');
     }
 }
