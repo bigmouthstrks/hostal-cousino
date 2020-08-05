@@ -18,4 +18,8 @@ class Habitacion extends Model
     public function reserva(){
         return $this->hasMany('App\Reserva','id_reserva');
     }
+
+    public function imagen(){
+        return $this->hasMany('App\Imagen');
+    }
 }

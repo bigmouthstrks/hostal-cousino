@@ -1,5 +1,6 @@
 <?php
 
+use Facade\FlareClient\View;
 use Illuminate\Support\Facades\Route;
 
 // Testimonios //
@@ -26,6 +27,7 @@ Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.
 Route::get('/reservas/search/{tipo}','ReservaController@search')->name('reservas.search');
 Route::delete('/reservas/{reserva}','ReservaController@destroy')->name('reservas.destroy');
 Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.update');
+Route::post('/reservas/consultar','ReservaController@consultar')->name('reservas.consultar');
 
 
 // Mensajes //
@@ -35,7 +37,6 @@ Route::post('/mensajes','MensajeController@send')->name('mensajes.send');
 // Vistas generales //
 Route::get('/','FrontController@index')->name('front.index');
 Route::get('/about','FrontController@about')->name('front.about');
-Route::get('/rooms','FrontController@rooms')->name('front.rooms');
 Route::get('/services','FrontController@services')->name('front.services');
 
 // Usuario //
@@ -67,5 +68,13 @@ Route::post('/informes/create_anual','InformeController@create_anual')->name('in
 // Artículo //
 Route::resource('/articulo', 'ArticuloController');
 
+// Check-in //
+Route::resource('/checkin', 'CheckinController');
+Route::get('/checkin/create/{reserva}','CheckinController@create')->name('checkin.create');
+Route::post('/checkin/store','CheckinController@store')->name('checkin.store');
+
 // Estadía //
 Route::get('/estadias/index','EstadiaController@index')->name('estadias.index');
+
+// Imagenes //
+Route::resource('/imagen','ImagenController');

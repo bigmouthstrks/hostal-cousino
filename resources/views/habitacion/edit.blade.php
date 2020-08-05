@@ -90,35 +90,6 @@
                     <label for="descripcion">Descripción:</label>
                     <textarea class="form-control" placeholder="Escriba aquí una descripción para la habitación" id="descripcion" name="descripcion" rows="3" value="{{old('descripcion')}}"></textarea>
                 </div>
-                {{--
-                <div class="container p-2 border rounded mt-2 mb-2">
-                    <label>Imágen:</label>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                        <input type="file" class="custom-file-input @error('imagen') is-invalid @enderror" id="imagen" name="imagen" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="imagen" data-browse="Examinar">Imagen</label>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                        <input type="file" class="custom-file-input @error('imagen_2') is-invalid @enderror" id="imagen_2" name="imagen_2" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="imagen_2">Imágen 2</label>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                        <input type="file" class="custom-file-input @error('imagen_3') is-invalid @enderror" id="imagen_3" name="imagen_3" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="imagen_3">Imágen 3</label>
-                        </div>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="custom-file">
-                        <input type="file" class="custom-file-input @error('imagen_4') is-invalid @enderror" id="imagen_4" name="imagen_4" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="imagen_4">Imágen 4</label>
-                        </div>
-                    </div>
-                </div>
-                --}}
 				<hr>
 				<button type="submit" class="btn btn-info">Confirmar</button>
 				<a href="{{ route('habitaciones.index') }}" class="btn btn-danger">Cancelar</a>

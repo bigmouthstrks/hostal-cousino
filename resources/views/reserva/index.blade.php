@@ -25,7 +25,7 @@
                         <td>{{ $reserva->id_reserva }}</td>
                         <td>{{ $reserva->inicio }}</td>
                         <td>{{ $reserva->termino }} </td>
-                        <td>{{ $reserva->id_usuario }}</td>
+                        <td>{{ $reserva->usuario_id }}</td>
                         <td>{{ $reserva->created_at }}</td>
                         <td>
                             <div class="container">
@@ -35,11 +35,8 @@
                                 <a data-toggle="tooltip" data-placement="top" title="Modificar" href="{{ route('reservas.edit', $reserva->id_reserva) }}" class="btn btn-info">
                                     <i class="fas fa-edit"></i>
                                 </a>
-                                <a data-toggle="tooltip" data-placement="top" title="Check-in" href="#" class="btn btn-info">
+                                <a data-toggle="tooltip" data-placement="top" title="Check-in" href="{{ route('checkin.create', $reserva->id_reserva) }}" class="btn btn-success">
                                     <i class="fas fa-check"></i>
-                                </a>
-                                <a data-toggle="tooltip" data-placement="top" title="Check-out" href="#" class="btn btn-info">
-                                    <i class="fas fa-check-double"></i>
                                 </a>
                             </div>
                         </td>
@@ -50,6 +47,7 @@
         </div>
     </div>
 </div>
+
 
 
 @endsection

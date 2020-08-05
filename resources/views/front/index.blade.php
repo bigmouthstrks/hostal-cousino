@@ -109,7 +109,7 @@
 		    	<p class="card-text">No pague de más por espacio que no utilizarás. Reserve una habitación a tu medida.</p>
 		  	</div>
 		  	<div class="pl-2 pr-2 pb-2 d-flex justify-content-center">
-		  		<a href="{{ route('front.rooms') }}" class="btn btn-info w-100">Ver habitaciones</a>
+		  		<a href="#" class="btn btn-info w-100">Ver habitaciones</a>
 		  	</div>
 		</div>
 		<div class="card">

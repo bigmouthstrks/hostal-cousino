@@ -10,7 +10,6 @@
 				<ul class="list-unstyled text-small">
 					<li><a class="text-light" href="{{ route('front.index') }}">Inicio</a></li>
 					<li><a class="text-light" href="{{ route('mensajes.create') }}">Contacto</a></li>
-					<li><a class="text-light" href="{{ route('front.rooms') }}">Habitaciones</a></li>
 					<li><a class="text-light" href="{{ route('reservas.create') }}">Reservar</a></li>
 					<li><a class="text-light" href="{{ route('front.services') }}">Servicios</a></li>
 					<li><a class="text-light" href="{{ route('front.about') }}">Hostal Cousiño</a></li>

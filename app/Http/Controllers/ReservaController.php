@@ -21,7 +21,7 @@ class ReservaController extends Controller
         if ($tipo_usuario == 'U'){
             /* Si el usuario logeado es cliente se mostrarán sólo las reservas realizadas por dicho usuario */
             $reservas = DB::table('reservas')
-                            ->where('id_usuario', $id_usuario)
+                            ->where('usuario_id', $id_usuario)
                             ->get();
         }else{
             if ($tipo_usuario == 'F'){
@@ -41,12 +41,46 @@ class ReservaController extends Controller
 
     public function search(String $tipo)
     {
-        return view('reserva.search', compact('tipo'));
+        $habitaciones = DB::table('habitaciones')->where('tipo', $tipo)->get();
+        $cantidad_habitaciones = count($habitaciones);
+
+        return view('reserva.search', compact('tipo','habitaciones'));
+    }
+
+    public function consultar(ReservaRequest $request)
+    {
+        $fecha_llegada = $request->fecha_llegada;
+        $fecha_salida = $request->fecha_salida;
+        $tipo = $request->tipo_habitacion;
+
+        $habitaciones_disponibles = [];
+
+        $habitaciones_disponibles = DB::select("
+                                    Select distinct res.habitacion_id
+                                    From habitaciones HAB
+                                    JOIN reservas RES on HAB.id_habitacion = RES.habitacion_id
+                                    Where RES.inicio not between '$fecha_llegada' and '$fecha_salida'
+                                    And RES.termino not between '$fecha_llegada' and '$fecha_salida'
+                                    and '$fecha_llegada' not between RES.inicio and RES.termino
+                                    and '$fecha_salida' not between RES.inicio and RES.termino
+                                    and HAB.tipo = '$tipo'
+                                    ");
+
+        dd($habitaciones_disponibles);
+
+        if(count($habitaciones_disponibles) < 1){
+            /* No hay habitaciones disponibles */
+                return back()->with('error','No hay habitaciones disponibles para la fecha ingresada');
+        }else{
+            if(count($habitaciones_disponibles) >= 1){
+                /* Hay habitaciones disponibles */
+                return view('mensaje.create');
+            }
+        }
     }
 
     public function store(ReservaRequest $request)
     {
-
         /* Generar id_reserva */
         $reservas = DB::select('SELECT * FROM reservas');
         $cantidad_reservas = 0;
@@ -81,8 +115,6 @@ class ReservaController extends Controller
 
         $usuario = Auth::user();
         $reserva->id_usuario = $usuario->id_usuario;
-
-        /* Obtener ID_ESTADIA */
 
         $reserva->save();
         return back()->with('success','¡Reserva registrada con éxito!');

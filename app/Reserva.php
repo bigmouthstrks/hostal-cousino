@@ -7,18 +7,19 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Reserva extends Model
 {
+    use SoftDeletes;
     protected $table = 'reservas';
     protected $primaryKey = 'id_reserva';
     protected $keyType = 'string';
-    protected $fillable = ['fecha_llegada','fecha_salida','cantidad_adultos','cantidad_niños','imagen','id_usuario'];
-    protected $guarded = ['id_reserva','id_usuario'];
+    protected $fillable = ['inicio','termino','id_usuario'];
+    protected $guarded = ['id_reserva','usuarios_id'];
     public $timestamps = true;
 
     public function usuario(){
-        return $this->belongsTo('App\Usuario','id_usuario');
+        return $this->belongsTo('App\Usuario','usuario_id');
     }
 
     public function habitacion(){
-        return $this->belongsToMany('App\Habitacion','id_habitacion');
+        return $this->belongsToMany('App\Habitacion','habitacion_id');
     }
 }

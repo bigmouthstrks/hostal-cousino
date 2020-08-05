@@ -67,7 +67,11 @@ class HabitacionController extends Controller
 
     public function show(Habitacion $habitacion)
     {
-        return view('habitacion.show', compact('habitacion'));
+        $imagenes = DB::table('imagenes')
+                    ->where('habitacion_id', $habitacion->id_habitacion)
+                    ->get();
+
+        return view('habitacion.show', compact('habitacion','imagenes'));
     }
 
     public function edit(Habitacion $habitacion)
