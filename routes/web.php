@@ -26,6 +26,8 @@ Route::get('/reservas/{reserva}/edit','ReservaController@edit')->name('reservas.
 Route::get('/reservas/search/{tipo}','ReservaController@search')->name('reservas.search');
 Route::delete('/reservas/{reserva}','ReservaController@destroy')->name('reservas.destroy');
 Route::put('reservas/{reserva}','ReservaController@update')->name('reservas.update');
+Route::post('/reservas/consultar','ReservaController@consultar')->name('reservas.consultar');
+Route::view('/reservas/registrar', 'reserva.registrar')->name('reservas.registrar');
 
 
 // Mensajes //

@@ -70,7 +70,7 @@
 	<hr>
     <h2 class="title text-center">Testimonios</h2>
     <hr>
-	<div class="row p-2 d-flex justify-content-center">
+	{{-- <div class="row p-2 d-flex justify-content-center">
 		@foreach($testimonios as $testimonio)
             <div class="shadow col-3 mr-5 ">
                 <div class="card-body">
@@ -87,7 +87,7 @@
 				</div>
             </div>
 		@endforeach
-	</div>
+    </div> --}}
 	<hr>
 	<div class="card-group">
 		<div class="card">

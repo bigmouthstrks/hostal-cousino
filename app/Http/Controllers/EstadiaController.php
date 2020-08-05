@@ -11,11 +11,7 @@ class EstadiaController extends Controller
         $this->middleware('funcionario');
         //->except(['index'])
     }
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         return view('estadia.index');
