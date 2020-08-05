@@ -52,3 +52,11 @@
 
 @endif
 
+@if ($message = Session::get('validar'))
+
+<div class="alert alert-info alert-block row">
+    <strong>{{ $message }}</strong>
+</div>
+
+@endif
+

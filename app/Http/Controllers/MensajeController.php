@@ -27,8 +27,8 @@ class MensajeController extends Controller
                 'correo' => $request->correo,
             );
             Mail::send('mensaje.formato_mail', $datos, function ($message) {
-                $message->from('benjamin.caceres.ra@gmail.com', 'Hostal Cousiño');
-                $message->to('benjamin.caceres.ra@gmail.com', 'Hostal Cousiño')->subject('Hostal Cousiño - Nuevo Mensaje');
+                $message->from('xelocandia@gmail.com', 'Hostal Cousiño');
+                $message->to('xelocandia@gmail.com', 'Hostal Cousiño')->subject('Hostal Cousiño - Nuevo Mensaje');
             });
 
             return back()->with('success','Mensaje enviado correctamente!');

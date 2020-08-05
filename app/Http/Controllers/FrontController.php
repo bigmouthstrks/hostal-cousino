@@ -13,8 +13,8 @@ class FrontController extends Controller
 
     public function index()
     {
-        /*
-        $testimonio1 = Testimonio::find(0);
+
+        /*$testimonio1 = Testimonio::find(0);
         $testimonio1->getOriginal();
         $testimonios = Testimonio::all();
         $cantidad = Testimonio::count();*/

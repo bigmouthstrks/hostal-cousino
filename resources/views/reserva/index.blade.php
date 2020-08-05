@@ -12,10 +12,12 @@
                 <thead class="thead-dark">
                     <tr>
                         <th>ID</th>
+                        <th>Habitación</th>
                         <th>Fecha Inicio</th>
                         <th>Fecha Término</th>
                         <th>Usuario</th>
-                        <th>Fecha reserva</th>
+                        <th>Fecha creación</th>
+                        <th>Fecha modificación</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -23,10 +25,12 @@
                     @foreach($reservas as $reserva)
                     <tr>
                         <td>{{ $reserva->id_reserva }}</td>
+                        <td>{{ $reserva->habitacion_id }}</td>
                         <td>{{ $reserva->inicio }}</td>
                         <td>{{ $reserva->termino }} </td>
                         <td>{{ $reserva->usuario_id }}</td>
                         <td>{{ $reserva->created_at }}</td>
+                        <td>{{ $reserva->updated_at }}</td>
                         <td>
                             <div class="container">
                                 <a data-toggle="tooltip" data-placement="top" title="Ver Detalles" href="{{ route('reservas.show', $reserva->id_reserva) }}" class="btn btn-warning">

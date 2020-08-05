@@ -7,9 +7,11 @@ use App\Http\Requests\ReservaRequest;
 use App\Reserva;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class ReservaController extends Controller
 {
+
     public function index()
     {
         /* TIPO DEL USUARIO LOGEADO ACTUALMENTE */
@@ -41,41 +43,73 @@ class ReservaController extends Controller
 
     public function search(String $tipo)
     {
-        $habitaciones = DB::table('habitaciones')->where('tipo', $tipo)->get();
-        $cantidad_habitaciones = count($habitaciones);
+        $habitaciones = DB::table('habitaciones')
+                            ->where('tipo', $tipo)
+                            ->get();
 
-        return view('reserva.search', compact('tipo','habitaciones'));
+        $hoy = Carbon::now();
+        $hoy = $hoy->addDays(1);
+        $hoy = $hoy->toDateString();
+
+        return view('reserva.search', compact('tipo','habitaciones','hoy'));
     }
 
     public function consultar(ReservaRequest $request)
     {
-        $fecha_llegada = $request->fecha_llegada;
-        $fecha_salida = $request->fecha_salida;
-        $tipo = $request->tipo_habitacion;
+        $fechas = array();
+        $reservas = DB::table('reservas')
+                            ->where('habitacion_id', $request->id_habitacion)
+                            ->get();
+        foreach ($reservas as $reserva) {
+            $inicio = $reserva->inicio;
+            $termino = $reserva->termino;
+            $inicio1 = Carbon::createFromFormat('Y-m-d', $inicio);
+            $termino1 = Carbon::createFromFormat('Y-m-d', $termino);
+            // dd($inicio1, $termino1);
 
-        $habitaciones_disponibles = [];
+            $diferencia = $inicio1->diffInDays($termino1);
+            // dd($diferencia);
 
-        $habitaciones_disponibles = DB::select("
-                                    Select distinct res.habitacion_id
-                                    From habitaciones HAB
-                                    JOIN reservas RES on HAB.id_habitacion = RES.habitacion_id
-                                    Where RES.inicio not between '$fecha_llegada' and '$fecha_salida'
-                                    And RES.termino not between '$fecha_llegada' and '$fecha_salida'
-                                    and '$fecha_llegada' not between RES.inicio and RES.termino
-                                    and '$fecha_salida' not between RES.inicio and RES.termino
-                                    and HAB.tipo = '$tipo'
-                                    ");
-
-        dd($habitaciones_disponibles);
-
-        if(count($habitaciones_disponibles) < 1){
-            /* No hay habitaciones disponibles */
-                return back()->with('error','No hay habitaciones disponibles para la fecha ingresada');
-        }else{
-            if(count($habitaciones_disponibles) >= 1){
-                /* Hay habitaciones disponibles */
-                return view('mensaje.create');
+            $fechas[] = $inicio1->toDateString();
+            for ($i=1; $i <= $diferencia ; $i++) {
+                $inicio1 = $inicio1->addDays(1);
+                $fechas[] = $inicio1->toDateString();
             }
+        }
+
+        $llegada_reserva = $request->fecha_llegada;
+        $salida_reserva = $request->fecha_salida;
+        $llegada_reserva1 = Carbon::createFromFormat('Y-m-d', $llegada_reserva);
+        $salida_reserva1 = Carbon::createFromFormat('Y-m-d', $salida_reserva);
+        $diferencia_reserva = $llegada_reserva1->diffInDays($salida_reserva1);
+        $fechas_reserva[] = $llegada_reserva1->toDateString();
+            for ($i=1; $i <= $diferencia_reserva ; $i++) {
+                $llegada_reserva1 = $llegada_reserva1->addDays(1);
+                $fechas_reserva[] = $llegada_reserva1->toDateString();
+            }
+
+
+        $cant_fechas = count($fechas_reserva);
+        $validar = true;
+
+        for ($i=0; $i < $cant_fechas ; $i++) {
+            if (in_array($fechas_reserva[$i], $fechas)) {
+                $validar = false;
+                return back()->with('error','La habitacion no está disponible para esa fecha');
+            }
+        }
+        if ($validar = true) {
+            // si //
+            $llegada = $fechas_reserva[0];
+            $salida = $fechas_reserva[$cant_fechas-1];
+            $habitacion = DB::table('habitaciones')
+                            ->where('id_habitacion', $request->id_habitacion)
+                            ->get();
+            return view('reserva.registrar', compact('llegada','salida','habitacion'));
+        }
+        else {
+            // no //
+            return back()->with('error','La habitacion no está disponible para esa fecha');
         }
     }
 
@@ -110,14 +144,15 @@ class ReservaController extends Controller
         $reserva->id_reserva = $id_reserva;
         $reserva->inicio = $request->fecha_llegada;
         $reserva->termino = $request->fecha_salida;
+        $reserva->habitacion_id = $request->id_habitacion;
 
         /* Obtener ID_USUARIO */
 
         $usuario = Auth::user();
-        $reserva->id_usuario = $usuario->id_usuario;
+        $reserva->usuario_id = $usuario->id_usuario;
 
         $reserva->save();
-        return back()->with('success','¡Reserva registrada con éxito!');
+        return redirect()->route('front.index');
     }
 
     public function show(Reserva $reserva)
@@ -127,13 +162,83 @@ class ReservaController extends Controller
 
     public function edit(Reserva $reserva)
     {
-        return view('reserva.edit', compact('reserva'));
+        $habitacion = DB::table('habitaciones')
+                        ->where('id_habitacion',$reserva->habitacion_id)
+                        ->get();
+
+        return view('reserva.edit', compact('reserva','habitacion'));
     }
 
     public function update(ReservaEditRequest $request, Reserva $reserva)
     {
+        // $fechas = array();
+        // $reservas = DB::table('reservas')
+        //                     ->where('habitacion_id', $request->id_habitacion)
+        //                     ->get();
+        // foreach ($reservas as $reserva_) {
+        //     $inicio = $reserva_->inicio;
+        //     $termino = $reserva_->termino;
+        //     $inicio1 = Carbon::createFromFormat('Y-m-d', $inicio);
+        //     $termino1 = Carbon::createFromFormat('Y-m-d', $termino);
+        //     // dd($inicio1, $termino1);
+
+        //     $diferencia = $inicio1->diffInDays($termino1);
+        //     // dd($diferencia);
+
+        //     $fechas[] = $inicio1->toDateString();
+        //     for ($i=1; $i <= $diferencia ; $i++) {
+        //         $inicio1 = $inicio1->addDays(1);
+        //         $fechas[] = $inicio1->toDateString();
+        //     }
+        // }
+
+        // $llegada_reserva = $request->fecha_llegada;
+        // $salida_reserva = $request->fecha_salida;
+        // $llegada_reserva1 = Carbon::createFromFormat('Y-m-d', $llegada_reserva);
+        // $salida_reserva1 = Carbon::createFromFormat('Y-m-d', $salida_reserva);
+        // $diferencia_reserva = $llegada_reserva1->diffInDays($salida_reserva1);
+        // $fechas_reserva[] = $llegada_reserva1->toDateString();
+        //     for ($i=1; $i <= $diferencia_reserva ; $i++) {
+        //         $llegada_reserva1 = $llegada_reserva1->addDays(1);
+        //         $fechas_reserva[] = $llegada_reserva1->toDateString();
+        //     }
+
+
+        // $cant_fechas = count($fechas_reserva);
+        // $validar = true;
+
+        // for ($i=0; $i < $cant_fechas ; $i++) {
+        //     if (in_array($fechas_reserva[$i], $fechas)) {
+        //         $validar = false;
+        //         return back()->with('error','La habitacion no está disponible para esa fecha');
+        //     }
+        // }
+        // if ($validar = true) {
+        //     // si //
+        //     $fechaActual = date('Y-m-d H:i:s');
+        //     $reserva->inicio = $request->fecha_llegada;
+        //     $reserva->termino = $request->fecha_salida;
+        //     $reserva->updated_at = $fechaActual;
+
+        //     $reserva->save();
+        //     return back()->with('success','¡Reserva modificada con éxito!');
+        // }
+        // else {
+        //     // no //
+        //     return back()->with('error','La habitacion no está disponible para esa fecha');
+        // }
+
+
+
+
+
+        $fechaActual = date('Y-m-d H:i:s');
+        $reserva->inicio = $request->fecha_llegada;
+        $reserva->termino = $request->fecha_salida;
+        $reserva->updated_at = $fechaActual;
+
         $reserva->save();
-        return back()->with('success','¡Reserva registrada con éxito!');
+        return back()->with('success','¡Reserva modificada con éxito!');
     }
 
     public function destroy(Reserva $reserva)
@@ -141,4 +246,9 @@ class ReservaController extends Controller
         $reserva->delete();
         return redirect()->route('reservas.index');
     }
+
+    // public function registrar()
+    // {
+    //     return view('reserva.registrar');
+    // }
 }
