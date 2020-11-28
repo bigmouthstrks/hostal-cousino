@@ -574,7 +574,7 @@
                 "illuminate/support": "^5.5|^6.0|^7.0|^8.0",
                 "php": ">=7",
                 "symfony/http-foundation": "^3.3|^4.0|^5.0",
-                "symfony/http-kernel": "^3.3|^4.0|^5.0"
+                "symfony/http-kernel": "5.1.5"
             },
             "require-dev": {
                 "laravel/framework": "^5.5|^6.0|^7.0|^8.0",
@@ -846,7 +846,7 @@
                 "symfony/error-handler": "^5.0",
                 "symfony/finder": "^5.0",
                 "symfony/http-foundation": "^5.0",
-                "symfony/http-kernel": "^5.1.5",
+                "symfony/http-kernel": "5.1.5",
                 "symfony/mime": "^5.0",
                 "symfony/process": "^5.0",
                 "symfony/routing": "^5.0",
@@ -2340,7 +2340,7 @@
                 "symfony/var-dumper": "^4.4|^5.0"
             },
             "require-dev": {
-                "symfony/http-kernel": "^4.4|^5.0",
+                "symfony/http-kernel": "^5.1.5",
                 "symfony/serializer": "^4.4|^5.0"
             },
             "type": "library",
@@ -3334,7 +3334,7 @@
                 "symfony/console": "^4.4|^5.0",
                 "symfony/dependency-injection": "^5.0",
                 "symfony/finder": "^4.4|^5.0",
-                "symfony/http-kernel": "^5.1.5",
+                "symfony/http-kernel": "5.1.5",
                 "symfony/intl": "^4.4|^5.0",
                 "symfony/service-contracts": "^1.1.2|^2",
                 "symfony/yaml": "^4.4|^5.0"
